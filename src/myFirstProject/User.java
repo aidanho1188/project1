@@ -1,3 +1,5 @@
+// author = "Aidan"
+
 package myFirstProject;
 
 public class User {
