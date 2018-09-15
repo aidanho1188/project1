@@ -1,3 +1,4 @@
+// author = "Aidan"
 // Namespace - keeping object unique
 // translates to a folder.
 // Helps you organize 'like' code.

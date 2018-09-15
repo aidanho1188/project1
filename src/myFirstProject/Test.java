@@ -10,7 +10,7 @@ package myFirstProject;
 public class Test {
 	// My name
 	private static String name = "Aidan";
-	private static String lastname = "Ho";
+	private static String lastName = "Ho";
 
 	// main method. Starts the program.
 	// Method Signature - What make this method unique. Defines the method.
@@ -30,6 +30,6 @@ public class Test {
 		System.out.println("Printing...");
 		System.out.println("Hello World!");
 		// printing my name
-		System.out.println("My name is " + name + " " + lastname + ".");
+		System.out.println("My name is " + name + " " + lastName + ".");
 	}
 }
