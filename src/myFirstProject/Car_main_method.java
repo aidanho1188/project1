@@ -15,8 +15,15 @@ public class Car_main_method {
 			System.out.println("Car year: " + car1.getyear());
 			System.out.println("Car mile: " + car1.getmile());
 			System.out.println("Car horsepower: " + car1.gethorsepower());
-			System.out.print("Car price: " + car1.getprice());
+			System.out.println("Car price: " + car1.getprice());
 			
+
+	
+	for (int number = 0; number <= 10; number++) {
+		System.in.toString();
+		System.out.println("$"+number+"k");
+		
 	}
 
+}
 }
