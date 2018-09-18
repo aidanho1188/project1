@@ -2,7 +2,7 @@
 
 package myFirstProject;
 
-public class Car_instances {
+public class Car {
 	// These is instance variables
 	public String brand;
 	public Integer year;
