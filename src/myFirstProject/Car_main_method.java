@@ -12,7 +12,7 @@ public class Car_main_method {
 			car1.setprice("$280,900");
 			
 //----------------------------------------------------------
-			Car car2 = new Car();
+		Car car2 = new Car();
 			car2.setbrand("Audi");
 			car2.setyear(2019);
 			car2.setmile(0);
@@ -20,7 +20,7 @@ public class Car_main_method {
 			car2.setprice("$83,800");
 
 //-----------------------------------------------------------
-			Car car3 = new Car();
+		Car car3 = new Car();
 			car3.setbrand("Toyota");
 			car3.setyear(2019);
 			car3.setmile(0);

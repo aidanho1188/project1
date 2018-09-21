@@ -8,7 +8,7 @@ package myFirstProject;
 public class App {
 
 	public static void main(String[] args) {
-		User u1 = new User(); // Instances
+		User u1 = new User();// this is how you create new instances
 		u1.setfirstName("George");
 		u1.setlastName("John");
 		u1.setemail("george@john.com");
