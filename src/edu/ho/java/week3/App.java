@@ -8,6 +8,7 @@ public class App {
 			l.createMask();
 			l.forLoopSample2();
 			l.forLoopSample1();
+			l.whileSample();
 		
 	}
 }

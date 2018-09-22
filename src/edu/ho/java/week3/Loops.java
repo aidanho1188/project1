@@ -2,6 +2,7 @@ package edu.ho.java.week3;
 
 public class Loops 
 {	
+		private int x;
 		public void forLoopSample1() 
 		
 		{
@@ -34,12 +35,12 @@ public class Loops
 		public void whileSample()
 		{
 			int i = 0;
-			for(int i = 0; i <10; i++) //repeat 10 time *if only* the keepRunning() statement is still true!! ||Loop nest: loop within loop(for in while, while in for)||
+			for(int i1 = 0; i1 <10; i1++) //repeat 10 time *if only* the keepRunning() statement is still true!! ||Loop nest: loop within loop(for in while, while in for)||
 			{
-				while(keepRunning())// Run this while the statement is true           This code is what make it a while loop
+				while(keepRunning(i1))// Run this while the statement is true           This code is what make it a while loop
 				{
 					System.out.println("Help!");
-					i++; // This + 1 but we set i = 0 on top so it will repeat 
+					i1++; // This + 1 but we set i = 0 on top so it will repeat 
 				}
 			}
 		}
@@ -47,6 +48,7 @@ public class Loops
 		
 		private boolean keepRunning(int i ) // boolean can take augrument infinity loop       This return true make the whileSample() loop run| boolean mean 0 or 1(true or false)
 		{	
+			int x = 0;
 			if(x = 0) 	// We can use this code for if statement to eliminated out *. In another word use logic
 			return true;
 			else
@@ -55,6 +57,7 @@ public class Loops
 		//-------------------------------------------------------------------- **Practice**
 		public void whileloop() 
 		{
+			int i = 0;
 			i++;		// this two lines create loop ***
 			int x = 0; // *****
 			while(thisIsTrue())
