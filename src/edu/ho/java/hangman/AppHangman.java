@@ -2,6 +2,8 @@ package edu.ho.java.hangman;
 
 public class AppHangman {
 	
+	private Object getuserInput;
+
 	public static void main(String[] args) {
 		
 		Hangman w = new Hangman();
@@ -16,10 +18,9 @@ public class AppHangman {
 		// Test for user input(String) Only 1 letter at a time
 		// Match user input with word
 		// reveal letter
-		w.revealLetter();
 		// Test if the word is completely reveal
 		// If live <= 0 end game, repeat/next word
-		w.game();
+
 		
 		
 		
