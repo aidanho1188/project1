@@ -14,7 +14,7 @@ public class AppHangman {
 		// Hint
 		// Ask User input
 		System.out.println(" ");
-		w.getuserInput();
+		w.checkUserInput();
 		// Test for user input(String) Only 1 letter at a time
 		// Match user input with word
 		// reveal letter

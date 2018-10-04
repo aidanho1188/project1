@@ -49,10 +49,10 @@ public class Loops
 		private boolean keepRunning(int i ) // boolean can take augrument infinity loop       This return true make the whileSample() loop run| boolean mean 0 or 1(true or false)
 		{	
 			int x = 0;
-			if(x = 0) 	// We can use this code for if statement to eliminated out *. In another word use logic
+			//if(x = 0) 	// We can use this code for if statement to eliminated out *. In another word use logic
 			return true;
-			else
-			return false;
+			//else
+		//	return false;
 		}
 		//-------------------------------------------------------------------- **Practice**
 		public void whileloop() 
@@ -68,10 +68,10 @@ public class Loops
 		//--------------------------------------------------------------- A loop within a loop let you move to the next game(new words)
 		public boolean thisIsTrue() // This is a method that return boolean(1 or 0)
 		{
-			if(int x = 0)
+		//	if(int x = 0)
 			return true;
-			else
-			return false;
+		//	else
+		//	return false;
 		}
 
 }
