@@ -31,18 +31,20 @@ public class Hangman {
 	}
 //--------------------------------------
 
-	public void maskWord(String guess) {
+	public void maskWord(String guess, String newword) {
 		String newmask = "";
+		newword = newmask;
 		for (int i = 0; i < word.length(); i++) {
 			if(!String.valueOf(word.charAt(i)).equals(guess.toLowerCase())) {
 				System.out.print("*");
-				newmask += "*";
+				newmask += word.charAt(i);
 			}
 			else {
-				newmask += word.charAt(i);
+				newword += word.charAt(i);
 				System.out.print(word.charAt(i));
 			}			
 		}
+		System.out.println("\n"+newword);
 	}
 
 
@@ -81,11 +83,10 @@ public class Hangman {
 			System.out.print( "Guess: " );
 			String guess = userInput.nextLine().toLowerCase();	 // ask user input
 		this.checkUserInput(guess); // check user input
-		this.maskWord(guess); // unmask a letter
-		System.out.println(" ");
+		this.maskWord(word, guess); // unmask a letter
 		
 
-		int lives = 5;
+		int lives = 6;
 		if (lives == 0) {
 			System.out.println("Game Over!");
 			//* End game/repeat
