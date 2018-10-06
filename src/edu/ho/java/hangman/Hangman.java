@@ -1,53 +1,66 @@
 package edu.ho.java.hangman;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Hangman {
 	
 	Scanner userInput = new Scanner(System.in); 
-	String guess = userInput.nextLine();	// This will ask for user input	
-	
-	int lives = 5;
-	
-	String[] wordList = {"Search", "Application", "Homeostatic", "General"}; // Array list for word
-	String[] hintList = {"Looking", "Apply", "Chemical balance", "G_ner__"};// Array list for hint
 
-//--------------------------------------
-	Random random = new Random();
-	String word = wordList[new Random().nextInt(wordList.length)];
+	// lives
+	int maxlive=6;
+	int live=0;
 	
-	public void maskWord() {
-		System.out.println(hint.indexOf(word));
-		// Choose random word from Array
-		for (int i = 0; i < word.length(); i++) {
-			
-			if(!String.valueOf(word.charAt(i)).equals(guess)) {
-				System.out.print("*");
-			}			
-			else {
-				System.out.print(word.charAt(i));
-			}
-		}			
+	
+	
+	String[] wordList = {"search", "application", "homeostatic", "general"}; // Array list for word
+	
+//	String[] hintList = {"Survey", "Request", "Chemical balance", "Common"};// Array list for hint
+	Random random = new Random();
+	String word = wordList[random.nextInt(wordList.length)];
+
+	
+	public void hint(String word) {
+		ArrayList<String> hint = new ArrayList<String>();
+		hint.add("Survey");
+		hint.add("Request");
+		hint.add("Chemical balance");
+		hint.add("Common");
+		System.out.println("Hint: "+hint);
 	}
 //--------------------------------------
-	
-	
+
+	public void maskWord(String guess) {
+		String newmask = ""; // Make new mask		
+		for (int i = 0; i < word.length(); i++) {
+			if(!String.valueOf(word.charAt(i)).equals(guess.toLowerCase())) {
+				System.out.print("*");
+			}
+			else {
+				newmask += word.charAt(i);
+				System.out.print(word.charAt(i));
+			}			
+		}
+		System.out.println(" ");
+
+		System.out.print(newmask);
+	}
+
+//-------------------------------------- 
+
 //--------------------------------------	
-		
 
-		
-	public void checkUserInput(){
-
+	public void checkUserInput(String guess){
 		
 		//This will check if user input is valid
-		if(guess == word) {
-			System.out.println(word.charAt(guess.length()));
+		if(String.valueOf(word).equals(guess)) {
+			System.out.println(word);
 		}
 		else if( guess.length() > 1) {
 			System.out.println("Pleasa enter only one letter.");
 		}
-		else if(guess.length() < 1 || guess.length() == 0){
+		else if(guess.length() <= 0){
 			System.out.println("Please enter a letter.");
 		}
 
@@ -59,16 +72,31 @@ public class Hangman {
 	
 //---------------------------------------
 	public void game() {
+		for (int i = 0; i < word.length(); i++) { // create a mask for our word
+			System.out.print("*");
+		}
+		
+		while (true) {
+			System.out.println(" ");
+		this.hint(word);	
+			System.out.print( "Guess: " );
+			String guess = userInput.nextLine().toLowerCase();	 // ask user input
+		this.checkUserInput(guess); // check user input
+		this.maskWord(guess); // unmask a letter
 		System.out.println(" ");
+		
+
+		int lives = 5;
 		if (lives == 0) {
 			System.out.println("Game Over!");
 			//* End game/repeat
 		} 
-		else {
+		else if (String.valueOf(word).equals(guess)){
 			System.out.println("Win!");
 			//* Next round
+		break;
 		}
 	}
-	
-	
 }
+}
+

@@ -2,19 +2,19 @@ package edu.ho.java.hangman;
 
 public class AppHangman {
 	
-	private Object getuserInput;
+
 
 	public static void main(String[] args) {
 		
 		Hangman w = new Hangman();
 		
+		w.game();
 		// Array Words
 		// Mask words
-		w.maskWord();
 		// Hint
 		// Ask User input
 		System.out.println(" ");
-		w.checkUserInput();
+
 		// Test for user input(String) Only 1 letter at a time
 		// Match user input with word
 		// reveal letter
