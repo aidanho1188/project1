@@ -32,20 +32,19 @@ public class Hangman {
 //--------------------------------------
 
 	public void maskWord(String guess) {
-		String newmask = ""; // Make new mask		
+		String newmask = "";
 		for (int i = 0; i < word.length(); i++) {
 			if(!String.valueOf(word.charAt(i)).equals(guess.toLowerCase())) {
 				System.out.print("*");
+				newmask += "*";
 			}
 			else {
 				newmask += word.charAt(i);
 				System.out.print(word.charAt(i));
 			}			
 		}
-		System.out.println(" ");
-
-		System.out.print(newmask);
 	}
+
 
 //-------------------------------------- 
 
