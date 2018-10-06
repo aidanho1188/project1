@@ -30,22 +30,32 @@ public class Hangman {
 		System.out.println("Hint: "+hint);
 	}
 //--------------------------------------
-		String newword;
-		String newmask = "";
+		String guesses;
+		String newWord;
+		String newMask = "";
 		
 	public void maskWord(String guess) {
-		newword = newmask;
-		for (int i = 0; i < word.length(); i++) {
-			if(!String.valueOf(word.charAt(i)).equals(guess.toLowerCase())) {
-				System.out.print("*");
-				newmask += "*";
+			newWord += newMask;
+			guesses += guess; // Store guess in guesses by iteration
+		for (int i = 0; i < word.length(); i++) { // This Loop Will reveal the correct letter
+			if(String.valueOf(word.charAt(i)).equals(guess.toLowerCase())) {
+				System.out.print(word.charAt(i));
 			}
 			else {
-				newword += word.charAt(i);
-				System.out.print(word.charAt(i));
-			}			
+				System.out.print("*");		
+			}
 		}
-		System.out.println("\n"+newword);
+		System.out.println(" ");
+		for (int i = 0; i < word.length(); i++) { 
+			if (String.valueOf(word.charAt(i)).equals(guesses)){
+				System.out.print(word.charAt(i));
+				newMask += word.charAt(i);
+			}
+			else {
+				System.out.print("*");
+				newMask += "*";
+			}
+		}		
 	}
 
 
@@ -83,7 +93,7 @@ public class Hangman {
 		this.hint(word);	
 			System.out.print( "Guess: " );
 			String guess = userInput.nextLine().toLowerCase();	 // ask user input
-		this.checkUserInput(guess); // check user input
+//		this.checkUserInput(guess); // check user input
 		this.maskWord(guess); // unmask a letter
 		
 
