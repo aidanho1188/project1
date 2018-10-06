@@ -30,15 +30,15 @@ public class Hangman {
 		System.out.println("Hint: "+hint);
 	}
 //--------------------------------------
-
-	public void maskWord(String guess) {
 		String newword;
 		String newmask = "";
+		
+	public void maskWord(String guess) {
 		newword = newmask;
 		for (int i = 0; i < word.length(); i++) {
 			if(!String.valueOf(word.charAt(i)).equals(guess.toLowerCase())) {
 				System.out.print("*");
-				newmask += word.charAt(i);
+				newmask += "*";
 			}
 			else {
 				newword += word.charAt(i);
