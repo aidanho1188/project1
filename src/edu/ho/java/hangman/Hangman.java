@@ -45,8 +45,10 @@ public class Hangman {
 				System.out.print("*");		
 			}
 		}
+		
 		System.out.println(" ");
-		for (int i = 0; i < word.length(); i++) { 
+		
+		for (int i = 0; i < word.length(); i++) { // Check if we have a letter that matched with the word in guesses
 			if (String.valueOf(word.charAt(i)).equals(guesses)){
 				System.out.print(word.charAt(i));
 				newMask += word.charAt(i);
