@@ -31,7 +31,8 @@ public class Hangman {
 	}
 //--------------------------------------
 
-	public void maskWord(String guess, String newword) {
+	public void maskWord(String guess) {
+		String newword;
 		String newmask = "";
 		newword = newmask;
 		for (int i = 0; i < word.length(); i++) {
@@ -83,7 +84,7 @@ public class Hangman {
 			System.out.print( "Guess: " );
 			String guess = userInput.nextLine().toLowerCase();	 // ask user input
 		this.checkUserInput(guess); // check user input
-		this.maskWord(word, guess); // unmask a letter
+		this.maskWord(guess); // unmask a letter
 		
 
 		int lives = 6;
