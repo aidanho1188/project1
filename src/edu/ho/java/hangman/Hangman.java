@@ -30,7 +30,7 @@ public class Hangman {
 		System.out.println("Hint: "+hint);
 	}
 //--------------------------------------
-		String guesses;
+		String guesses = "";
 		String newWord;
 		String newMask = "";
 		
@@ -40,6 +40,7 @@ public class Hangman {
 		for (int i = 0; i < word.length(); i++) { // This Loop Will reveal the correct letter
 			if(String.valueOf(word.charAt(i)).equals(guess.toLowerCase())) {
 				System.out.print(word.charAt(i));
+				guesses += word.charAt(i);
 			}
 			else {
 				System.out.print("*");		
@@ -47,11 +48,11 @@ public class Hangman {
 		}
 		
 		System.out.println(" ");
-		
+
 		for (int i = 0; i < word.length(); i++) { // Check if we have a letter that matched with the word in guesses
-			if (String.valueOf(word.charAt(i)).equals(guesses)){
+			if (guesses.contains(String.valueOf(word.charAt(i)))){
 				System.out.print(word.charAt(i));
-				newMask += word.charAt(i);
+				newMask += String.valueOf(word.charAt(i));
 			}
 			else {
 				System.out.print("*");
@@ -95,7 +96,7 @@ public class Hangman {
 		this.hint(word);	
 			System.out.print( "Guess: " );
 			String guess = userInput.nextLine().toLowerCase();	 // ask user input
-//		this.checkUserInput(guess); // check user input
+		this.checkUserInput(guess); // check user input
 		this.maskWord(guess); // unmask a letter
 		
 
@@ -104,7 +105,7 @@ public class Hangman {
 			System.out.println("Game Over!");
 			//* End game/repeat
 		} 
-		else if (String.valueOf(word).equals(guess)){
+		else if (String.valueOf(word).equals(guesses)){
 			System.out.println("Win!");
 			//* Next round
 		break;
