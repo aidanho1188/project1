@@ -1,35 +1,36 @@
 package edu.ho.java.hangman;
-
+// _author_ = Aidan
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class Hangman {
+public class Hangman 
+{
 	
 	Scanner userInput = new Scanner(System.in); 
 
-// lives
-	int died=0;
-	int live=6;
+// chances
+	int chances=10;
 	
-//--------------------------	
+//--------------------------	Create variable/List for game
 	
 	String[] wordList = {"search", "application", "homeostatic", "general"}; // Array list for word	
 	Random random = new Random();
 	String word = wordList[random.nextInt(wordList.length)];
 //---------------------------This is for maskWord method	
 	String guesses = "";
-	String newMask = "";
 
 //------------------------------Methods----------------------------------
-	public void hint(String word) {
+// Hint list print by if/else statement
+	public void hint(String word) 
+	{
 		ArrayList<String> hint = new ArrayList<String>();
 		hint.add("Survey");
 		hint.add("Request");
 		hint.add("Chemical balance");
 		hint.add("Common");
-		// print hint with if/else statement
+// printing out the hint
 		if (word == wordList[0]) {
 			System.out.println("Your hint: A synonym of "+ hint.get(0));
 		}
@@ -45,26 +46,21 @@ public class Hangman {
 	}
 //--------------------------------------
 		
-	public void maskWord(String guess) throws InterruptedException {
-		guesses += guess;
-		if (!guess.equals(word)) { // substact 1 live each wrong guess
-			live--;
-		}
-		
-		if (live == died) {
-			System.out.println("\n Game Over!");
-			this.playAgain();
-		} 
-		else if (newMask.contentEquals(word)){ //use guesses in this method to determind if word had been guesses
-			System.out.println("Win!");
-			this.playAgain();
+	public void maskWord(String guess) throws InterruptedException 
+	{
+		String newMask = ""; //We use this newMask later to check if we reveal all the letter.. so we can win.
+		guesses += guess;  //Store all our guess, in guesses.
+		if (!guess.equals(word)) // - 1 chance each guess
+		{ 
+			chances--;
 		}
 			
 		System.out.println("---------------------------------------------------------");
 		System.out.print("Word: " );
 
-		for (int i = 0; i < word.length(); i++) { // Check if we have a letter that matched with the word in guesses
-			if (guesses.contains(String.valueOf(word.charAt(i)))){
+		for (int i = 0; i < word.length(); i++) // Check if we have a letter that matched with the word in guesses
+		{ 
+			if (guesses.contains(String.valueOf(word.charAt(i)))){ 
 				System.out.print(word.charAt(i));
 				newMask += String.valueOf(word.charAt(i));
 			}
@@ -73,20 +69,32 @@ public class Hangman {
 				newMask += "*";
 			}
 
-		}		
+		}
+		// check if our word has been solved
+		if (chances == 0) 
+		{
+			System.out.println("\n Game Over!");
+			this.playAgain();
+		} 
+			else if (!newMask.contains("*")) //use newMask in this method to determind if word had been guesses
+		{ 
+			System.out.println("\nWin!");
+			this.playAgain();
+		}
 	}
 	
 //---------------------------------------
-	public void game() throws InterruptedException {
+	public void game() throws InterruptedException 
+	{
 		System.out.println("Welcome to hangman!");   //Start game 
 		TimeUnit.SECONDS.sleep(2);					// Add in delays
-		System.out.println("Here are the rules:"); // Game rules
+		System.out.println("Here are the rules:"); // Game rules***
 		TimeUnit.SECONDS.sleep(1);
-		System.out.println("1. You have 6 chance to guess the word!");
+		System.out.println("1. You have 10 chance to guess the word!");
 		TimeUnit.SECONDS.sleep(1);
-		System.out.println("3. Have only 1 hint!");
+		System.out.println("2. Have only 1 hint!");
 		TimeUnit.SECONDS.sleep(1);
-		System.out.println("*The best way to win this is pay attention to the hint!");
+		System.out.println("*The best way to win this is pay attention to the hint!");//***
 
 		System.out.println("\nPress enter to continue");
 		@SuppressWarnings("unused")
@@ -97,30 +105,35 @@ public class Hangman {
 		TimeUnit.SECONDS.sleep(1);
 		System.out.print("Your word have "+ word.length()+" letters."); 
 		TimeUnit.SECONDS.sleep(1);
-		this.playGame();
+		this.playGame(); //move to playGame and ask for user input 
 	}
 	
-	public void playGame() throws InterruptedException {
+	public void playGame() throws InterruptedException 
+	{
 		
-		while (true) {
-		System.out.println("\nYou have " + live + " chances left.");               // print lives
-		this.hint(word);	
+		while (true) 
+		{
+		System.out.println("\nYou have " + chances + " chances left.");               // print chances
+		this.hint(word);										// print hint
 		System.out.print( "Guess: " );
 		String guess = userInput.nextLine().toLowerCase();	 // ask user input
-		this.maskWord(guess); // unmask a letter
+		this.maskWord(guess); // unmask a letters
 	
+		}
 	}
-}
 	
-	public void playAgain() throws InterruptedException {   // Ask user is they want to play agian
-		System.out.println("Do you want to play again?: \nType y or Y for yes\nType n or N for no");
+	public void playAgain() throws InterruptedException 
+	{   // Ask user is they want to play agian
+		System.out.println("Do you want to play again?: \nType y or Y for yes");
 		String again = userInput.nextLine();
-		if (String.valueOf(again).equals("y") || String.valueOf(again).equals("Y")) {
+		if (String.valueOf(again).equals("y") || String.valueOf(again).equals("Y")) 
+		{
 		this.game();			
 		}
-		else {
+		else { // Create a loop that keep asking the user input to play the game, if the user don't want to play, the screen will keep clearing.
 		System.out.println("Game end.");
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n "); // clear screen
+		@SuppressWarnings("unused")
 		String again1 = userInput.nextLine();
 		this.playAgain();
 		}
