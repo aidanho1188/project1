@@ -22,9 +22,9 @@ public class Hangman
 	String guesses = "";
 
 //------------------------------Methods----------------------------------
-// Hint list print by if/else statement
+// This method will print hints by if/else statement.
 	public void hint(String word) 
-	{
+	{   //Hint list
 		ArrayList<String> hint = new ArrayList<String>();
 		hint.add("Survey");
 		hint.add("Request");
@@ -44,9 +44,9 @@ public class Hangman
 			System.out.println("Your hint: A synonym of "+ hint.get(3));
 		}
 	}
-//--------------------------------------
+//-----------------------------------------------------------------------
 		
-	public void maskWord(String guess) throws InterruptedException 
+	public void maskWord(String guess) throws InterruptedException  // This method will mask word and reveal letters. It also check if our word has been completely reveal.
 	{
 		String newMask = ""; //We use this newMask later to check if we reveal all the letter.. so we can win.
 		guesses += guess;  //Store all our guess, in guesses.
@@ -58,10 +58,10 @@ public class Hangman
 		System.out.println("---------------------------------------------------------");
 		System.out.print("Word: " );
 
-		for (int i = 0; i < word.length(); i++) // Check if we have a letter that matched with the word in guesses
+		for (int i = 0; i < word.length(); i++) // Check if we have a letter that matched with the word in guesses by the for loop.
 		{ 
-			if (guesses.contains(String.valueOf(word.charAt(i)))){ 
-				System.out.print(word.charAt(i));
+			if (guesses.contains(String.valueOf(word.charAt(i)))){ // Check guesses that we made instead of previous guess.
+				System.out.print(word.charAt(i));		// Reveal letter.
 				newMask += String.valueOf(word.charAt(i));
 			}
 			else {
@@ -83,8 +83,8 @@ public class Hangman
 		}
 	}
 	
-//---------------------------------------
-	public void game() throws InterruptedException 
+//----------------------------------------------------------------
+	public void game() throws InterruptedException  // This method welcoming player and start the game.
 	{
 		System.out.println("Welcome to hangman!");   //Start game 
 		TimeUnit.SECONDS.sleep(2);					// Add in delays
@@ -107,8 +107,8 @@ public class Hangman
 		TimeUnit.SECONDS.sleep(1);
 		this.playGame(); //move to playGame and ask for user input 
 	}
-	
-	public void playGame() throws InterruptedException 
+//---------------------------------------------------------------	
+	public void playGame() throws InterruptedException  // This method contain the while loop keep the game going.
 	{
 		
 		while (true) 
@@ -121,8 +121,8 @@ public class Hangman
 	
 		}
 	}
-	
-	public void playAgain() throws InterruptedException 
+//---------------------------------------------------------------	
+	public void playAgain() throws InterruptedException  // This method ask if the player want to play the game after they loss or win.
 	{   // Ask user is they want to play agian
 		System.out.println("Do you want to play again?: \nType y or Y for yes");
 		String again = userInput.nextLine();
