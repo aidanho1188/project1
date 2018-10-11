@@ -50,7 +50,7 @@ public class Hangman
 	{
 		String newMask = ""; //We use this newMask later to check if we reveal all the letter.. so we can win.
 		guesses += guess;  //Store all our guess, in guesses.
-		if (!guess.equals(word)) // - 1 chance each guess
+		if (!guess.contains(String.valueOf(word))) // - 1 chance each guess
 		{ 
 			chances--;
 		}
@@ -61,7 +61,7 @@ public class Hangman
 		for (int i = 0; i < word.length(); i++) // Check if we have a letter that matched with the word in guesses by the for loop.
 		{ 
 			if (guesses.contains(String.valueOf(word.charAt(i)))){ // Check guesses that we made instead of previous guess.
-				System.out.print(word.charAt(i));		// Reveal letter.
+				System.out.print(word.charAt(i));		// Reveal a letter.
 				newMask += String.valueOf(word.charAt(i));
 			}
 			else {
@@ -104,8 +104,7 @@ public class Hangman
 		System.out.println("***Start***");
 		TimeUnit.SECONDS.sleep(1);
 		System.out.print("Your word have "+ word.length()+" letters."); 
-		TimeUnit.SECONDS.sleep(1);
-		this.playGame(); //move to playGame and ask for user input 
+playGame(); //move to playGame and ask for user input 
 	}
 //---------------------------------------------------------------	
 	public void playGame() throws InterruptedException  // This method contain the while loop keep the game going.
@@ -123,7 +122,7 @@ public class Hangman
 	}
 //---------------------------------------------------------------	
 	public void playAgain() throws InterruptedException  // This method ask if the player want to play the game after they loss or win.
-	{   // Ask user is they want to play agian
+	{   // Ask user is they want to play again
 		System.out.println("Do you want to play again?: \nType y or Y for yes");
 		String again = userInput.nextLine();
 		if (String.valueOf(again).equals("y") || String.valueOf(again).equals("Y")) 
