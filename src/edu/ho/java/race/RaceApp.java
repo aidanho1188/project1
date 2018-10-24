@@ -12,9 +12,9 @@ public class RaceApp {
 		
 		Track track = new Track(0, 0, 0);
 		
-		Car car1 = new Car(150, 50, 5, 0);
+		Car car1 = new Car(100, 10, 20);
 		
-		Car car2 = new Car(100, 60, 5, 0);
+		Car car2 = new Car(100, 50, 8);
 		
 		
 		while (!race.isFinished()) //check if game finished

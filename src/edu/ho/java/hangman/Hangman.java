@@ -11,7 +11,7 @@ public class Hangman
 	Scanner userInput = new Scanner(System.in); 
 
 // chances
-	int chance=10;
+	int chances=10;
 //	int live=6
 	
 //--------------------------	Create variable/List for game
