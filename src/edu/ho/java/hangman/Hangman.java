@@ -11,7 +11,8 @@ public class Hangman
 	Scanner userInput = new Scanner(System.in); 
 
 // chances
-	int chances=10;
+	int chance=10;
+//	int live=6
 	
 //--------------------------	Create variable/List for game
 	
@@ -68,6 +69,12 @@ public class Hangman
 				System.out.print("*");
 				newMask += "*";
 			}
+			
+//			if (!(word.contains(guess))){
+//				lives--;
+//				break
+				
+//			}
 
 		}
 		// check if our word has been solved
