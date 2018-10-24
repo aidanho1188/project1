@@ -111,7 +111,7 @@ public class Hangman
 		System.out.println("***Start***");
 		TimeUnit.SECONDS.sleep(1);
 		System.out.print("Your word have "+ word.length()+" letters."); 
-playGame(); //move to playGame and ask for user input 
+		playGame(); //move to playGame and ask for user input 
 	}
 //---------------------------------------------------------------	
 	public void playGame() throws InterruptedException  // This method contain the while loop keep the game going.
