@@ -69,8 +69,8 @@ public class GameSolution {
 	
 	public String generateMask() 
 	{
+		int n = 0;
 		String mask ="";
-		
 		//Loop over word
 		for (int i=0; i < word.length(); i++)
 		{
@@ -83,13 +83,19 @@ public class GameSolution {
 			else
 			{
 				mask += "*";			//If they did not, append a*.
+				System.out.println(live);
+			}
+			for (int i1 = 0;i1 <word.length();i1++) {
+				if (guesses.contains(currentChar)) {
+					n=n+1;
+				}
+			}
+			if (n == 0) {
+				live--;
 			}
 
 		}
-		CharSequence charWord = word;
-		if(!word.contains(guesses)) {
-			live--;			
-		}
+
 		return mask;
 		
 	}
