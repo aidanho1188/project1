@@ -1,6 +1,7 @@
 package edu.ho.java.hangman_v2;
 
 import java.util.List;
+import java.util.Scanner;
 
 // Process the input and check if it right
 //
@@ -20,8 +21,8 @@ public class Game
 	public String getGuesses() {
 		return guesses;
 	}
-	public void setGuesses(String guesses) {
-		this.guesses += guesses;
+	public void setGuesses(String guess) {
+		this.guesses += guess;
 	}
 	public String getHint() {
 		return hint;
@@ -38,11 +39,11 @@ public class Game
 
 	public String maskWord() 
 	{
-		String mask="";
+		String mask= "";
 		for (int i = 0; i < word.length(); i++) 
 		{
 			String currentChar = String.valueOf(word.charAt(i));
-			if (guesses.contains(currentChar)) 
+			if (guesses.contains(currentChar))
 			{
 				mask += currentChar;
 			}
@@ -50,16 +51,12 @@ public class Game
 			{
 				mask += "*";
 			}
-			if(!guesses.contains(currentChar)) 
-			{
-				lives--;
-				break;
-			}
 			
 		}
 		return mask;
 
 	}
+	
 	
 	public boolean gameSolve() {
 		return !maskWord().contains("*");

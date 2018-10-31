@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Main Hangman classssss
+ * Main Hangman class
  */
 public class Hangman {
 	private static final Scanner userInput = new Scanner(System.in);

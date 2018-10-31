@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Controller {
 
@@ -15,20 +16,32 @@ public class Controller {
 	}
 	public List<Game> read() throws IOException
 	{
+		/**
+		 * Control how the game procedure
+		 */
+		Scanner user_input = new Scanner(System.in);
 		List<Game> games = new ArrayList<Game>();
 		File f = new File("GameList");
 		System.out.println("Does the file existed? "+ f.exists());
 		
 		if (f.exists())
 		{
+			// Get a word from the file
 			BufferedReader br = new BufferedReader(new FileReader(f));
-			String string;
-			while ((string = br.readLine()) != null )
-			{
+			String word = br.readLine();
+			while (true)
+			{	// Create new game
 				Game g = new Game();
-				g.setWord(string);
+				// Set the word to setWord
+				g.setWord(word);
+				// Print masked word
+				// Print hint
+				// Ask for user input
+				String guess = user_input.nextLine();
+				// Set user input
+				g.setGuesses(guess);
+				// Un-mask user guess letter
 				System.out.println("Word: "+g.maskWord());
-				System.out.println("Hint: "+g.getHint());
 				
 			}
 		}
