@@ -6,11 +6,11 @@ import java.util.Scanner;
 // Process the input and check if it right
 //
 public class Game {
-	private int lives = 6;
-	private String guesses = "";
+	private int lives= 6;
+	private String guesses= "";
 	private String hint;
 	private String word;
-
+	
 	public int getLives() {
 		return lives;
 	}
@@ -70,12 +70,16 @@ public class Game {
 	}
 
 	public boolean dead() {
-		if (getLives() == 0) {
+		if (getLives() == 0) 
+		{
 			return true;
-		} else {
+		} 
+		else 
+		{
 			return false;
 		}
 
 	}
+	
 
 }
