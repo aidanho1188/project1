@@ -3,14 +3,16 @@ package edu.ho.java.hangman_v2;
 import java.util.List;
 import java.util.Scanner;
 
-// Process the input and check if it right
-//
+/**
+ * Hangman class
+ * @author Aidan Ho
+ */
 public class Game {
-	private int lives= 6;
-	private String guesses= "";
+	private int lives = 6;
+	private String guesses = "";
 	private String hint;
 	private String word;
-	
+
 	public int getLives() {
 		return lives;
 	}
@@ -64,22 +66,18 @@ public class Game {
 			lives--;
 		}
 	}
-	
+
 	public boolean gameSolve() {
 		return !maskWord().contains("*");
 	}
 
 	public boolean dead() {
-		if (getLives() == 0) 
-		{
+		if (getLives() == 0) {
 			return true;
-		} 
-		else 
-		{
+		} else {
 			return false;
 		}
 
 	}
-	
 
 }
