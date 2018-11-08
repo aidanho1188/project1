@@ -17,6 +17,7 @@ import edu.ho.java.week8.User;
  * Take words from a game file
  * Loop through games
  * 
+ * Goal achieved!
  * @author Aidan Ho
  */
 
