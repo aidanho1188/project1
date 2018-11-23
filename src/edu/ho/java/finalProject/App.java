@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JTextPane;
 
 public class App {
 
@@ -45,7 +46,7 @@ public class App {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 745, 472);
+		frame.setBounds(100, 100, 457, 304);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -89,5 +90,33 @@ public class App {
 		JLabel lblSearch = new JLabel("Search:");
 		lblSearch.setBounds(10, 8, 46, 14);
 		panel_1.add(lblSearch);
+		
+		JLabel lblName = new JLabel("Name:");
+		lblName.setBounds(10, 41, 46, 14);
+		panel_1.add(lblName);
+		
+		JLabel lblDuration = new JLabel("Duration:");
+		lblDuration.setBounds(250, 66, 46, 14);
+		panel_1.add(lblDuration);
+		
+		JLabel lblAuthor = new JLabel("Author:");
+		lblAuthor.setBounds(250, 41, 46, 14);
+		panel_1.add(lblAuthor);
+		
+		JLabel lblGeners = new JLabel("Geners:");
+		lblGeners.setBounds(10, 66, 46, 14);
+		panel_1.add(lblGeners);
+		
+		JButton btnLyrics = new JButton("Lyrics");
+		btnLyrics.setBounds(337, 203, 89, 23);
+		panel_1.add(btnLyrics);
+		
+		JLabel lblDescribtion = new JLabel("Description:");
+		lblDescribtion.setBounds(10, 91, 89, 14);
+		panel_1.add(lblDescribtion);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(93, 91, 326, 101);
+		panel_1.add(textPane);
 	}
 }
