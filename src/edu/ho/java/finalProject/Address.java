@@ -2,29 +2,39 @@ package edu.ho.java.finalProject;
 
 import java.nio.file.Path;
 
+/**
+ * 
+ * @author Aidan Ho
+ *
+ */
 public class Address {
-	int duration;
-	Path URL;
-	String site;
+	String url;
+	String siteName;
+	String song;
 	
-	public int getDuration() {
-		return duration;
+	public String getUrl() {
+		return url;
 	}
-	public void setDuration(int duration) {
-		this.duration = duration;
+	public void setUrl(String string) {
+		this.url = string;
 	}
-	public Path getURL() {
-		return URL;
+	public String getSiteName() {
+		return siteName;
 	}
-	public void setURL(Path uRL) {
-		URL = uRL;
+	public void setSiteName(String siteName) {
+		this.siteName = siteName;
 	}
-	public String getSite() {
-		return site;
+	public String getSong() {
+		return song;
 	}
-	public void setSite(String site) {
-		this.site = site;
+	public void setSong(String song) {
+		this.song = song;
 	}
 	
+	// Constructor
+	public void saveAddress(String siteName, String url) {
+		this.url = url;
+		this.siteName = siteName;
+	}
 
 }
