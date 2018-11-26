@@ -57,13 +57,14 @@ public class Song {
 		this.date = date;
 	}
 	// Constructor
-	public void saveSong(String songName, String author, String lyric, String date, String duration, String genres) {
+	public void saveSong(String songName, String author, String lyric, String date, String duration, String genres, String description) {
 		this.songName = songName;
 		this.author = author;
 		this.lyric = lyric;
 		this.date = date;
 		this.duration = duration;
 		this.genres = genres;
+		this.description = description;
 	}
 
 }
