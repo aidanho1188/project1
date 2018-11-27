@@ -102,7 +102,8 @@ public class App {
 				 */
 				Login log = new Login();
 				log.setVisible(true);
-				textField_2.revalidate();
+				textField_2.validate();
+				System.out.print(user.firstName);
 			}
 		});
 		btnLogin.setBounds(755, 532, 197, 47);
@@ -134,7 +135,6 @@ public class App {
 		textField_2.setBounds(155, 30, 797, 45);
 		panel_2.add(textField_2);
 		textField_2.setColumns(10);
-		System.out.print(textField_2.getText());
 		
 		textField_3 = new JTextField();
 		textField_3.setEditable(false);
