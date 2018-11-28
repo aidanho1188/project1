@@ -107,7 +107,7 @@ public class MainUi {
 		frame.getContentPane().add(textFieldPassword);
 		
 		JLabel lblAddress = new JLabel("Address");
-		lblAddress.setBounds(286, 378, 112, 39);
+		lblAddress.setBounds(333, 388, 78, 14);
 		frame.getContentPane().add(lblAddress);
 		
 		JLabel lblStreet = new JLabel("Street:");
@@ -126,8 +126,8 @@ public class MainUi {
 		lblZipcode.setBounds(31, 665, 121, 39);
 		frame.getContentPane().add(lblZipcode);
 		
-		JLabel lblOrder = new JLabel("Order:");
-		lblOrder.setBounds(764, 33, 93, 39);
+		JLabel lblOrder = new JLabel("Order");
+		lblOrder.setBounds(844, 42, 64, 14);
 		frame.getContentPane().add(lblOrder);
 		
 		JLabel lblNewLabel = new JLabel("Item:");
