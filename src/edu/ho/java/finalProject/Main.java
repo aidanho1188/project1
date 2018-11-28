@@ -24,21 +24,34 @@ import edu.ho.java.hangman_v2.Game;;
  * @author Aidan Ho
  *
  */
-public class Main extends User {
+public class Main extends User{
 
 	/**
 	 * smart code to get website information
 	 * 
+	 * @param songInfo from ui
 	 * @throws IOException
 	 */
-	public void getStats() throws IOException {
+	public void saveStats(String songInfo) {
+		BufferedWriter writer;
+		// Write the file without overwrite it.
+		try {
+			writer = new BufferedWriter(new FileWriter(
+					"C:\\Users\\Aidan Ho\\gitHome\\project1\\src\\edu\\ho\\java\\finalProject\\songDatabase", true));
+			writer.write(songInfo);
+			writer.newLine();
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
 	/**
 	 * save user information into a file
 	 * 
-	 * @param userInfo
+	 * @param userInfo from ui (else) statement
 	 * @catch IOException e
 	 */
 	public void register(String userInfo) {
@@ -56,9 +69,8 @@ public class Main extends User {
 	}
 
 	/**
-	 * smart code for user login 
-	 * Read UserList file and scan if the username and password is valid 
-	 * This will return either true or false
+	 * smart code for user login Read UserList file and scan if the username and
+	 * password is valid This will return either true or false
 	 * 
 	 * @param username1 and password1 from user input
 	 * @catch IOException e
@@ -94,7 +106,32 @@ public class Main extends User {
 		return isLogin;
 	}
 
-	public static void main(String[] args) throws Exception {
+	/**
+	 * load song
+	 * 
+	 */
+	public void loadSong() {
+		File file = new File("C:\\Users\\Aidan Ho\\gitHome\\project1\\src\\edu\\ho\\java\\finalProject\\songDatabase");
+		List<String> list = new ArrayList<String>();
+		Song song = new Song();
+		// Fill in the list
+		try {
+			Scanner input = new Scanner(file);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			while (input.hasNextLine()) {
+				// read a line
+				String lines = reader.readLine();
+				String[] line = lines.split(":");
+				// save songName
+				song.songName = line[1];
+				input.nextLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void getUrlInfo() throws IOException {
 		Song s = new Song();
 		URL url = new URL("https://www.youtube.com/oembed?format=json&url=https://www.youtube.com/watch?v=qVdPh2cBTN0");
 		URLConnection con = url.openConnection();
@@ -109,4 +146,29 @@ public class Main extends User {
 			}
 		}
 	}
+
+	// Testing
+	public static void main(String[] args) throws Exception {
+		File file = new File("C:\\Users\\Aidan Ho\\gitHome\\project1\\src\\edu\\ho\\java\\finalProject\\songDatabase");
+		List<String> list = new ArrayList<String>();
+		Song song = new Song();
+		// Fill in the list
+		try {
+			Scanner input = new Scanner(file);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			while (input.hasNextLine()) {
+				// read a line
+				String lines = reader.readLine();
+				String[] line = lines.split(":");
+				// save user information for comparison
+				song.songName = line[0];
+				// compare username1 and password1
+				input.nextLine();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.print(song.songName);
+	}
+
 }

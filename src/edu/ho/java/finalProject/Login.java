@@ -28,6 +28,7 @@ import javax.swing.JPasswordField;
 public class Login extends JFrame {
 
 	Main login = new Main();
+	User u = new User();
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;

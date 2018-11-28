@@ -38,8 +38,7 @@ public class App {
 	Song song = new Song();
 	Address address = new Address();
 	User user = new User();
-	Main register = new Main();
-	Main login = new Main();
+	Main m = new Main();
 	
 	private JFrame frame;
 	private JTextField textField;
@@ -50,6 +49,11 @@ public class App {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private JTextField textField_11;
+	private JTextField textField_12;
 	
 
 	/**
@@ -102,8 +106,6 @@ public class App {
 				 */
 				Login log = new Login();
 				log.setVisible(true);
-				textField_2.validate();
-				System.out.print(user.firstName);
 			}
 		});
 		btnLogin.setBounds(755, 532, 197, 47);
@@ -142,6 +144,15 @@ public class App {
 		panel_2.add(textField_3);
 		textField_3.setColumns(10);
 		
+		JButton btnTest = new JButton("Get user first and last name");
+		btnTest.addActionListener(new ActionListener() {
+			public void  actionPerformed(ActionEvent e) {
+				textField_2.setText(user.firstName);
+			}
+		});
+		btnTest.setBounds(299, 532, 197, 47);
+		panel_2.add(btnTest);
+		
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("Add Song", null, panel, null);
 		panel.setLayout(null);
@@ -160,6 +171,7 @@ public class App {
 			/**
 			 * Run smart code to find song information
 			 * save song and Address info
+			 * add song to jComboBox
 			 */
 			public void actionPerformed(ActionEvent e) {
 				String url = textField.getText();
@@ -168,14 +180,16 @@ public class App {
 				String duration = textField_6.getText();
 				String genres = textField_7.getText();
 				String description = textField_1.getText();
+				String songInfo = (songName + ":" + author + " " + url + ":" + duration + ":" + duration + ":" + genres + ":" + description);
+				m.saveStats(songInfo);
 				address.saveAddress(null, url);
 				song.saveSong(songName, author, null, null, duration, genres, description);
 				System.out.println(address.url);
-				System.out.print(song.songName);	
-				System.out.print(song.author);	
-				System.out.print(song.duration);	
-				System.out.print(song.genres);	
-				System.out.print(song.description);		
+				System.out.println(song.songName);	
+				System.out.println(song.author);	
+				System.out.println(song.duration);	
+				System.out.println(song.genres);	
+				System.out.println(song.description);		
 				
 			}
 		});
@@ -188,7 +202,7 @@ public class App {
 		panel.add(lblNewLabel);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(213, 389, 739, 45);
+		textField_1.setBounds(213, 402, 739, 45);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
@@ -237,8 +251,18 @@ public class App {
 		panel_1.setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				m.loadSong();
+				textField_8.setText(song.songName);
+				
+			}
+		});
 		comboBox.setEditable(true);
-		comboBox.setBounds(160, 5, 792, 28);
+		comboBox.setBounds(160, 5, 792, 45);
 		panel_1.add(comboBox);
 		
 		JLabel lblSearch = new JLabel("Search:");
@@ -246,31 +270,75 @@ public class App {
 		panel_1.add(lblSearch);
 		
 		JLabel lblName = new JLabel("Name:");
-		lblName.setBounds(10, 50, 119, 25);
+		lblName.setBounds(10, 123, 119, 25);
 		panel_1.add(lblName);
 		
 		JLabel lblDuration = new JLabel("Duration:");
-		lblDuration.setBounds(539, 99, 182, 25);
+		lblDuration.setBounds(521, 222, 182, 25);
 		panel_1.add(lblDuration);
 		
 		JLabel lblAuthor = new JLabel("Author:");
-		lblAuthor.setBounds(539, 50, 119, 25);
+		lblAuthor.setBounds(521, 123, 119, 25);
 		panel_1.add(lblAuthor);
 		
 		JLabel lblGeners = new JLabel("Geners:");
-		lblGeners.setBounds(10, 99, 119, 25);
+		lblGeners.setBounds(10, 222, 119, 25);
 		panel_1.add(lblGeners);
 		
 		JButton btnLyrics = new JButton("Lyrics");
-		btnLyrics.setBounds(828, 544, 124, 35);
+		btnLyrics.setBounds(546, 544, 175, 47);
 		panel_1.add(btnLyrics);
 		
 		JLabel lblDescribtion = new JLabel("Description:");
-		lblDescribtion.setBounds(10, 160, 182, 25);
+		lblDescribtion.setBounds(10, 345, 182, 25);
 		panel_1.add(lblDescribtion);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(31, 207, 921, 241);
-		panel_1.add(textPane);
+		JButton btnNewButton_2 = new JButton("Load song");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				/**
+				 * check what the search text field is then, get the info and set it.
+				 */
+				String url = textField.getText();
+				String songName = textField_4.getText();
+				String author = textField_5.getText();
+				String duration = textField_6.getText();
+				String genres = textField_7.getText();
+				String description = textField_1.getText();
+				textField_8.setText(songName);
+				textField_9.setText(genres);
+				textField_10.setText(author);
+				textField_11.setText(duration);
+				textField_12.setText(description);
+				
+			}
+		});
+		btnNewButton_2.setBounds(755, 544, 197, 47);
+		panel_1.add(btnNewButton_2);
+		
+		textField_8 = new JTextField();
+		textField_8.setBounds(134, 113, 276, 45);
+		panel_1.add(textField_8);
+		textField_8.setColumns(10);
+		
+		textField_9 = new JTextField();
+		textField_9.setBounds(134, 202, 276, 45);
+		panel_1.add(textField_9);
+		textField_9.setColumns(10);
+		
+		textField_10 = new JTextField();
+		textField_10.setColumns(10);
+		textField_10.setBounds(676, 113, 276, 45);
+		panel_1.add(textField_10);
+		
+		textField_11 = new JTextField();
+		textField_11.setColumns(10);
+		textField_11.setBounds(676, 212, 276, 45);
+		panel_1.add(textField_11);
+		
+		textField_12 = new JTextField();
+		textField_12.setBounds(191, 335, 761, 45);
+		panel_1.add(textField_12);
+		textField_12.setColumns(10);
 	}
 }

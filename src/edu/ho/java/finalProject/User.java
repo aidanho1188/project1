@@ -5,7 +5,7 @@ package edu.ho.java.finalProject;
  * @author Aidan Ho
  *
  */
-public class User {
+public class User extends Song{
 	String firstName;
 	String lastName;
 	String username;
