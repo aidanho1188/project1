@@ -10,6 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 /**
+ * Project 3
+ * Create classes that model this scenario.
+ * Create a class to load and store lists of Users, Addresses, and Orders.
+ * Create a UI to create (add to above list(s)) Users, Addresses, and Orders.
+ * Java best practices are expected. Good names, comments, proper case sensitivity, etc..
+ * 
  * main object
  * @author Aidan Ho
  *

@@ -147,7 +147,7 @@ public class App {
 		JButton btnTest = new JButton("Get user first and last name");
 		btnTest.addActionListener(new ActionListener() {
 			public void  actionPerformed(ActionEvent e) {
-				textField_2.setText(user.firstName);
+				textField_2.setText(user.getFirstName() + " " + user.getLastName());
 			}
 		});
 		btnTest.setBounds(299, 532, 197, 47);
@@ -181,7 +181,7 @@ public class App {
 				String genres = textField_7.getText();
 				String description = textField_1.getText();
 				String songInfo = (songName + ":" + author + " " + url + ":" + duration + ":" + duration + ":" + genres + ":" + description);
-				m.saveStats(songInfo);
+				m.saveSong(songInfo);
 				address.saveAddress(null, url);
 				song.saveSong(songName, author, null, null, duration, genres, description);
 				System.out.println(address.url);

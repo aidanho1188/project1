@@ -90,10 +90,13 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String username1 = textField.getText();
 				String password1 = passwordField.getText().toString();
+				String firstName = login.getFirstName();
+				String lastName = login.getLastName();
 				
 				// check if username and password is matched with the UserList in the main class
 					if (login.Login(username1, password1)) {
 						JOptionPane.showMessageDialog(null, "Login successful!", "Login", JOptionPane.INFORMATION_MESSAGE);
+						login.saveUser(firstName, lastName, username1, password1);
 						contentPane.setVisible(false);
 						dispose();
 					}
