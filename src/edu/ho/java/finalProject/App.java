@@ -39,6 +39,8 @@ public class App extends Login{
 	Address address = new Address();
 	User user = new User();
 	Main m = new Main();
+	Login log = new Login();
+	Register reg = new Register();
 	
 	private JFrame frame;
 	private JTextField textField;
@@ -104,7 +106,6 @@ public class App extends Login{
 				/**
 				 * smart code, pop up login window
 				 */
-				Login log = new Login();
 				log.setVisible(true);
 			}
 		});
@@ -117,7 +118,6 @@ public class App extends Login{
 				/**
 				 * smart code, pop up register window
 				 */
-				Register reg = new Register();
 				reg.setVisible(true);
 			}
 		});
@@ -147,7 +147,7 @@ public class App extends Login{
 		JButton btnTest = new JButton("Get user first and last name");
 		btnTest.addActionListener(new ActionListener() {
 			public void  actionPerformed(ActionEvent e) {
-				textField_2.setText(user.firstName);
+				textField_2.setText(user.getFirstName() + " " + user.getLastName());
 			}
 		});
 		btnTest.setBounds(299, 532, 197, 47);
@@ -181,7 +181,7 @@ public class App extends Login{
 				String genres = textField_7.getText();
 				String description = textField_1.getText();
 				String songInfo = (songName + ":" + author + " " + url + ":" + duration + ":" + duration + ":" + genres + ":" + description);
-				m.saveStats(songInfo);
+				m.saveSong(songInfo);
 				address.saveAddress(null, url);
 				song.saveSong(songName, author, null, null, duration, genres, description);
 				System.out.println(address.url);

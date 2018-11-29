@@ -10,6 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 /**
+ * Project 3
+ * Create classes that model this scenario.
+ * Create a class to load and store lists of Users, Addresses, and Orders.
+ * Create a UI to create (add to above list(s)) Users, Addresses, and Orders.
+ * Java best practices are expected. Good names, comments, proper case sensitivity, etc..
+ * 
  * main object
  * @author Aidan Ho
  *
@@ -107,7 +113,7 @@ public class UI {
 		frame.getContentPane().add(textFieldPassword);
 		
 		JLabel lblAddress = new JLabel("Address");
-		lblAddress.setBounds(286, 378, 112, 39);
+		lblAddress.setBounds(333, 388, 78, 14);
 		frame.getContentPane().add(lblAddress);
 		
 		JLabel lblStreet = new JLabel("Street:");
@@ -126,8 +132,8 @@ public class UI {
 		lblZipcode.setBounds(31, 665, 121, 39);
 		frame.getContentPane().add(lblZipcode);
 		
-		JLabel lblOrder = new JLabel("Order:");
-		lblOrder.setBounds(764, 33, 93, 39);
+		JLabel lblOrder = new JLabel("Order");
+		lblOrder.setBounds(844, 42, 64, 14);
 		frame.getContentPane().add(lblOrder);
 		
 		JLabel lblNewLabel = new JLabel("Item:");

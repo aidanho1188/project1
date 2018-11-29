@@ -32,21 +32,29 @@ public class Main extends User{
 	 * @param songInfo from ui
 	 * @throws IOException
 	 */
-	public void saveStats(String songInfo) {
-		BufferedWriter writer;
-		// Write the file without overwrite it.
+	public void saveSong(String songInfo) {
+		File file = new File("C:\\Users\\Aidan Ho\\gitHome\\project1\\src\\edu\\ho\\java\\finalProject\\songDatabase");
+		List<String> list = new ArrayList<String>();
+		Song song = new Song();
+		// Fill in the list
 		try {
-			writer = new BufferedWriter(new FileWriter(
-					"C:\\Users\\Aidan Ho\\gitHome\\project1\\src\\edu\\ho\\java\\finalProject\\songDatabase", true));
-			writer.write(songInfo);
-			writer.newLine();
-			writer.close();
+			Scanner input = new Scanner(file);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			while (input.hasNextLine()) {
+				// read a line
+				String lines = reader.readLine();
+				String[] line = lines.split(":");
+				// save user information for comparison
+				song.songName = line[0];
+				// compare username1 and password1
+				input.nextLine();
+			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		System.out.print(song.songName);
 	}
+
 
 	/**
 	 * save user information into a file
@@ -78,7 +86,7 @@ public class Main extends User{
 	 */
 	public boolean Login(String username1, String password1) {
 		boolean isLogin = false;
-		File file = new File("C:\\Users\\Aidan Ho\\gitHome\\project1\\src\\edu\\ho\\java\\finalProject\\UserList");
+		File file = new File("UserList");
 		List<String> list = new ArrayList<String>();
 
 		// Fill in the list
@@ -133,7 +141,7 @@ public class Main extends User{
 
 	public void getUrlInfo() throws IOException {
 		Song s = new Song();
-		URL url = new URL("https://www.youtube.com/oembed?format=json&url=https://www.youtube.com/watch?v=qVdPh2cBTN0");
+		URL url = new URL("https://www.youtube.com/watch?v=qVdPh2cBTN0");
 		URLConnection con = url.openConnection();
 		InputStream is = url.openStream();
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
