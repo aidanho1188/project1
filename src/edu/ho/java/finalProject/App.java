@@ -39,6 +39,8 @@ public class App {
 	Address address = new Address();
 	User user = new User();
 	Main m = new Main();
+	Login log = new Login();
+	Register reg = new Register();
 	
 	private JFrame frame;
 	private JTextField textField;
@@ -104,7 +106,6 @@ public class App {
 				/**
 				 * smart code, pop up login window
 				 */
-				Login log = new Login();
 				log.setVisible(true);
 			}
 		});
@@ -117,7 +118,6 @@ public class App {
 				/**
 				 * smart code, pop up register window
 				 */
-				Register reg = new Register();
 				reg.setVisible(true);
 			}
 		});
