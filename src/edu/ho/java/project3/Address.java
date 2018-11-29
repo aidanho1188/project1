@@ -1,11 +1,23 @@
 package edu.ho.java.project3;
-
+/**
+ * Address class / getter and saver
+ * @author Aidan Ho
+ *
+ */
 public class Address { 
 	String street;
 	String city;
 	String state;
 	String zipcode;
 	
+
+	/**
+	 * 
+	 * @param street
+	 * @param city
+	 * @param state
+	 * @param zipcode
+	 */
 	// address constructor
 	public void saveAddress(String street, String city, String state, String zipcode) {
 		this.street = street;

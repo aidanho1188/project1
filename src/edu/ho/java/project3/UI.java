@@ -14,7 +14,7 @@ import javax.swing.JButton;
  * @author Aidan Ho
  *
  */
-public class MainUi {
+public class UI {
 	
 	User u = new User();
 	Address a = new Address();
@@ -41,7 +41,7 @@ public class MainUi {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainUi window = new MainUi();
+					UI window = new UI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class MainUi {
 	/**
 	 * Create the application.
 	 */
-	public MainUi() {
+	public UI() {
 		initialize();
 	}
 

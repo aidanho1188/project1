@@ -33,7 +33,7 @@ import java.awt.Color;
  *
  */
 
-public class App {
+public class App extends Login{
 
 	Song song = new Song();
 	Address address = new Address();
