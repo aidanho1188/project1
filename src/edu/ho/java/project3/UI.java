@@ -218,7 +218,7 @@ public class UI {
 				
 				// a separate variable for address/shippingAddress
 				String address = street + " " + city +" "+ state + " "+ zipcode + ".";
-				String shippingAddress = address;
+				Address shippingAddress = address;
 				// save everything use user, address, order constructor
 				u.saveUser(firstName, lastName, email, password, address);
 				a.saveAddress(street, city, state, zipcode);
