@@ -3,7 +3,7 @@ package edu.ho.java.project3;
 import java.util.ArrayList;
 import java.util.List;
 /**
- * 
+ * main class
  * @author Aidan Ho
  *
  */
@@ -35,8 +35,6 @@ public class Main {
 		users.getClass();
 		order.getClass();
 		address.getClass();
-		
-
 	}
 
 }

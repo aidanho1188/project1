@@ -6,7 +6,7 @@ package edu.ho.java.project3;
  * @author Aidan Ho
  *
  */
-public class User extends Address{
+public class User {
 	String firstName;
 	String lastName;
 	String email;
@@ -67,6 +67,11 @@ public class User extends Address{
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	
+	// string for the user name
+	public String userName() {
+		return firstName +" "+ lastName;
 	}
 
 }

@@ -6,7 +6,7 @@ package edu.ho.java.project3;
  * @author Aidan Ho
  *
  */
-public class Order extends User{
+public class Order {
 	String item;
 	String quanity;
 	String userId;

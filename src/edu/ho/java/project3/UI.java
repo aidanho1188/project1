@@ -235,13 +235,13 @@ public class UI {
 			// load everything from classes and print it out
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+
 				m.load();
 				System.out.println("First Name is: " + u.getFirstName());
 				System.out.println("Last Name is: " + u.getLastName());
 				System.out.println("Email is: " + u.getEmail());
 				System.out.println("Password is: " + u.getPassword());
-				System.out.println("Address is: " + a.getStreet()+" "+a.getCity()+", "+a.getState()+" "+a.getZipcode());
+				System.out.println("Address is: " + a.userAddress());
 				System.out.println(" ");
 				System.out.println("Street is: "+ a.getStreet());
 				System.out.println("City is: "+ a.getCity());
@@ -250,7 +250,7 @@ public class UI {
 				System.out.println(" ");
 				System.out.println("Item is: " + o.getItem());
 				System.out.println("Item Quanity is: " + o.getQuanity());
-				System.out.println("Shipping Address is: " + u.firstName+" "+u.getLastName()+" "+a.getStreet()+" "+a.getCity()+", "+a.getState()+" "+a.getZipcode());
+				System.out.println("Shipping Address is: " + u.userName()+" "+ a.userAddress());
 				System.out.println("User ID is: " + o.getUserId());
 				System.out.println("Cost is: " + o.getCost());
 				

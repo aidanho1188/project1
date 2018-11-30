@@ -59,5 +59,10 @@ public class Address {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
+	
+	// String for user address
+	public String userAddress() {
+		return street+". "+city+", "+state+" "+zipcode;
+	}
 
 }
