@@ -198,9 +198,7 @@ public class UI {
 			/**
 			 * Save everything to classes
 			 */
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				// get info from textField and turn it into string
 				// save everything by using user, address, and order constructor
 				String street = textFieldStreet.getText().toString();
@@ -219,7 +217,7 @@ public class UI {
 				String quanity = textFieldQuanity.getText().toString();
 				String userId = textFieldUserId.getText().toString();
 				String cost = textFieldCost.getText().toString();
-				o.setOrder(item, quanity, userId, u, cost);
+				o.setOrder(item, quanity, userId, cost, a, u);
 				
 				// add to the list
 				m.store(a,u,o);
@@ -232,8 +230,9 @@ public class UI {
 		JButton btnLoad = new JButton("Load");
 		btnLoad.addActionListener(new ActionListener() {
 			
-			// load everything from classes and print it out
-			@Override
+			/**
+			 * load everything from previous classes and print it out
+			 */
 			public void actionPerformed(ActionEvent e) {
 
 				m.load();
@@ -241,7 +240,7 @@ public class UI {
 				System.out.println("Last Name is: " + u.getLastName());
 				System.out.println("Email is: " + u.getEmail());
 				System.out.println("Password is: " + u.getPassword());
-				System.out.println("Address is: " + a.userAddress());
+				System.out.println("Address is: " + u.address());
 				System.out.println(" ");
 				System.out.println("Street is: "+ a.getStreet());
 				System.out.println("City is: "+ a.getCity());
@@ -250,7 +249,7 @@ public class UI {
 				System.out.println(" ");
 				System.out.println("Item is: " + o.getItem());
 				System.out.println("Item Quanity is: " + o.getQuanity());
-				System.out.println("Shipping Address is: " + u.userName()+" "+ a.userAddress());
+				System.out.println("Shipping Address is: " + o.shippingAddress());
 				System.out.println("User ID is: " + o.getUserId());
 				System.out.println("Cost is: " + o.getCost());
 				

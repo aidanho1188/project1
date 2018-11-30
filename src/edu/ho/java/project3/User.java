@@ -70,8 +70,8 @@ public class User {
 	}
 	
 	// string for the user name
-	public String userName() {
-		return firstName +" "+ lastName;
+	public String address() {
+		return  address.street + ". " + address.city+", "+address.state+" "+address.zipcode;
 	}
 
 }
