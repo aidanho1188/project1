@@ -6,7 +6,7 @@ package edu.ho.java.project3;
  * @author Aidan Ho
  *
  */
-public class User {
+public class User extends Address{
 	String firstName;
 	String lastName;
 	String email;
@@ -21,12 +21,12 @@ public class User {
 	 * @param password
 	 * @param address
 	 */
-	public Address saveUser(String firstName, String lastName, String email, String password, Address address) {
+	public void setUser(String firstName, String lastName, String email, String password, Address address) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		return this.address = address;
+		this.address = address;
 	}
 
 	public String getFirstName() {
