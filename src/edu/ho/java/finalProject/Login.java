@@ -25,7 +25,7 @@ import javax.swing.JPasswordField;
  * @author Aidan Ho
  *
  */
-public class Login extends JFrame {
+public class Login extends JFrame{
 
 	Main login = new Main();
 	User u = new User();
@@ -38,7 +38,7 @@ public class Login extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
+			public void run() { 
 				try {
 					Login frame = new Login();
 					frame.setVisible(true);

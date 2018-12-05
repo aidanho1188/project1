@@ -35,7 +35,7 @@ import java.awt.Font;
  *
  */
 
-public class App {
+public class App extends Login{
 
 	Song song = new Song();
 	Address address = new Address();

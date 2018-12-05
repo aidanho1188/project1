@@ -20,11 +20,12 @@ import javax.swing.JButton;
  * @author Aidan Ho
  *
  */
-public class MainUi {
+public class UI {
 	
+	Main m = new Main();
 	User u = new User();
-	Address a = new Address();
 	Order o = new Order();
+	Address a = new Address();
 
 	private JFrame frame;
 	private JTextField textFieldFirstName;
@@ -47,7 +48,7 @@ public class MainUi {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainUi window = new MainUi();
+					UI window = new UI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +60,7 @@ public class MainUi {
 	/**
 	 * Create the application.
 	 */
-	public MainUi() {
+	public UI() {
 		initialize();
 	}
 
@@ -197,32 +198,29 @@ public class MainUi {
 			/**
 			 * Save everything to classes
 			 */
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				// get info from textField and turn it into string
-				String firstName = textFieldFirstName.getText().toString();
-				String lastName = textFieldLastName.getText().toString();
-				String email = textFieldEmail.getText().toString();
-				String password = textFieldPassword.getText().toString();
-				
+				// save everything by using user, address, and order constructor
 				String street = textFieldStreet.getText().toString();
 				String city = textFieldCity.getText().toString();
 				String state = textFieldState.getText().toString();
 				String zipcode = textFieldZipcode.getText().toString();
+				a.setAddress(street, city, state, zipcode);
+				
+				String firstName = textFieldFirstName.getText().toString();
+				String lastName = textFieldLastName.getText().toString();
+				String email = textFieldEmail.getText().toString();
+				String password = textFieldPassword.getText().toString();
+				u.setUser(firstName, lastName, email, password, a);
 				
 				String item = textFieldItem.getText().toString();
 				String quanity = textFieldQuanity.getText().toString();
 				String userId = textFieldUserId.getText().toString();
 				String cost = textFieldCost.getText().toString();
+				o.setOrder(item, quanity, userId, cost, a, u);
 				
-				// a separate variable for address/shippingAddress
-				String address = street + " " + city +" "+ state + " "+ zipcode + ".";
-				String shippingAddress = address;
-				// save everything use user, address, order constructor
-				u.saveUser(firstName, lastName, email, password, address);
-				a.saveAddress(street, city, state, zipcode);
-				o.saveOrder(item, quanity, userId, shippingAddress, cost);
+				// add to the list
+				m.store(a,u,o);
 				
 			}
 		});
@@ -232,15 +230,17 @@ public class MainUi {
 		JButton btnLoad = new JButton("Load");
 		btnLoad.addActionListener(new ActionListener() {
 			
-			// load everything from classes and print it out
-			@Override
+			/**
+			 * load everything from previous classes and print it out
+			 */
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+
+				m.load();
 				System.out.println("First Name is: " + u.getFirstName());
 				System.out.println("Last Name is: " + u.getLastName());
 				System.out.println("Email is: " + u.getEmail());
 				System.out.println("Password is: " + u.getPassword());
-				System.out.println("Address is is: " + u.getAddress());
+				System.out.println("Address is: " + u.address());
 				System.out.println(" ");
 				System.out.println("Street is: "+ a.getStreet());
 				System.out.println("City is: "+ a.getCity());
@@ -249,7 +249,7 @@ public class MainUi {
 				System.out.println(" ");
 				System.out.println("Item is: " + o.getItem());
 				System.out.println("Item Quanity is: " + o.getQuanity());
-				System.out.println("Shipping Address is: " + o.getShippingAddress());
+				System.out.println("Shipping Address is: " + o.shippingAddress());
 				System.out.println("User ID is: " + o.getUserId());
 				System.out.println("Cost is: " + o.getCost());
 				
