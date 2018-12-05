@@ -7,6 +7,7 @@ import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,6 +24,7 @@ import javax.swing.UIManager;
 import javax.swing.event.AncestorListener;
 
 import java.awt.Color;
+import java.awt.Font;
 /**
  * Login window ()
  * register window (done)
@@ -45,8 +47,6 @@ public class App {
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
@@ -56,6 +56,8 @@ public class App {
 	private JTextField textField_10;
 	private JTextField textField_11;
 	private JTextField textField_12;
+	private JTextField textFieldUsername;
+	private JPasswordField passwordField;
 	
 
 	/**
@@ -88,7 +90,6 @@ public class App {
 		
 		frame = new JFrame();
 		frame.setForeground(Color.WHITE);
-		frame.setAlwaysOnTop(true);
 		frame.setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 1024, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,12 +105,27 @@ public class App {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/**
-				 * smart code, pop up login window
+				 * Smart code check user information for login
+				 * get username and password from the textField and passwordField
 				 */
-				log.setVisible(true);
+				String username1 = textFieldUsername.getText();
+				String password1 = passwordField.getText().toString();
+				String firstName = m.getFirstName();
+				String lastName = m.getLastName();
+				
+				// check if username and password is matched with the UserList in the main class
+					if (m.Login(username1, password1)) {
+						JOptionPane.showMessageDialog(null, "Login successful!", "Login", JOptionPane.INFORMATION_MESSAGE);
+						m.saveUser(firstName, lastName, username1, password1);
+					}
+					else {
+						passwordField.setText("");
+						JOptionPane.showMessageDialog(null, "Incorrect Username or Password!", "Login", JOptionPane.ERROR_MESSAGE);
+					}
+			
 			}
 		});
-		btnLogin.setBounds(755, 532, 197, 47);
+		btnLogin.setBounds(796, 643, 197, 47);
 		panel_2.add(btnLogin);
 		
 		JButton btnNewButton = new JButton("Register");
@@ -121,37 +137,32 @@ public class App {
 				reg.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(527, 532, 197, 47);
+		btnNewButton.setBounds(569, 643, 197, 47);
 		panel_2.add(btnNewButton);
 		
-		JLabel lblName_1 = new JLabel("Name:");
-		lblName_1.setBounds(31, 33, 93, 39);
-		panel_2.add(lblName_1);
+		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setFont(new Font("Tahoma", Font.BOLD, 36));
+		lblLogin.setBounds(408, 11, 104, 46);
+		panel_2.add(lblLogin);
 		
-		JLabel lblNumberOfSongs = new JLabel("Number of songs:");
-		lblNumberOfSongs.setBounds(31, 118, 252, 39);
-		panel_2.add(lblNumberOfSongs);
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblUsername.setBounds(10, 167, 90, 25);
+		panel_2.add(lblUsername);
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setBounds(155, 30, 797, 45);
-		panel_2.add(textField_2);
-		textField_2.setColumns(10);
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPassword.setBounds(10, 342, 90, 25);
+		panel_2.add(lblPassword);
 		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		textField_3.setBounds(314, 115, 638, 45);
-		panel_2.add(textField_3);
-		textField_3.setColumns(10);
+		textFieldUsername = new JTextField();
+		textFieldUsername.setBounds(10, 203, 983, 33);
+		panel_2.add(textFieldUsername);
+		textFieldUsername.setColumns(10);
 		
-		JButton btnTest = new JButton("Get user first and last name");
-		btnTest.addActionListener(new ActionListener() {
-			public void  actionPerformed(ActionEvent e) {
-				textField_2.setText(user.getFirstName() + " " + user.getLastName());
-			}
-		});
-		btnTest.setBounds(299, 532, 197, 47);
-		panel_2.add(btnTest);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(10, 470, 983, 33);
+		panel_2.add(passwordField);
 		
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("Add Song", null, panel, null);
@@ -174,22 +185,6 @@ public class App {
 			 * add song to jComboBox
 			 */
 			public void actionPerformed(ActionEvent e) {
-				String url = textField.getText();
-				String songName = textField_4.getText();
-				String author = textField_5.getText();
-				String duration = textField_6.getText();
-				String genres = textField_7.getText();
-				String description = textField_1.getText();
-				String songInfo = (songName + ":" + author + " " + url + ":" + duration + ":" + duration + ":" + genres + ":" + description);
-				m.saveSong(songInfo);
-				address.saveAddress(null, url);
-				song.saveSong(songName, author, null, null, duration, genres, description);
-				System.out.println(address.url);
-				System.out.println(song.songName);	
-				System.out.println(song.author);	
-				System.out.println(song.duration);	
-				System.out.println(song.genres);	
-				System.out.println(song.description);		
 				
 			}
 		});
@@ -255,10 +250,7 @@ public class App {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				m.loadSong();
-				textField_8.setText(song.songName);
-				
+					
 			}
 		});
 		comboBox.setEditable(true);
@@ -296,21 +288,7 @@ public class App {
 		JButton btnNewButton_2 = new JButton("Load song");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				/**
-				 * check what the search text field is then, get the info and set it.
-				 */
-				String url = textField.getText();
-				String songName = textField_4.getText();
-				String author = textField_5.getText();
-				String duration = textField_6.getText();
-				String genres = textField_7.getText();
-				String description = textField_1.getText();
-				textField_8.setText(songName);
-				textField_9.setText(genres);
-				textField_10.setText(author);
-				textField_11.setText(duration);
-				textField_12.setText(description);
-				
+	
 			}
 		});
 		btnNewButton_2.setBounds(755, 544, 197, 47);

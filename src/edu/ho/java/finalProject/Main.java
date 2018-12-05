@@ -16,44 +16,29 @@ import javax.swing.text.Document;
 import edu.ho.java.hangman_v2.Game;;
 
 /**
- * Create an app that take user input(url) Get information from a webpage and
- * add it into the database
+ *Old proposal
+ *I want to make an application that takes URL from the user and find the Songs information on a web page like name, duration, lyrics, and author. It will also store all of that information on another file so the user can call it.
+
+ *Make UI
+ *Get User Input
+ *Gather information from URL
+ *Store information in a file
  *
- * Smart code object register user (done) User login (done) get info from url
+ *
+ *New proposal
+ *
+ *Make and application that let the user self-register and login. Allow the user to manually add a song into a song list.
+ *
+ *Create UI
+ *Store user register info in a file
+ *Login: Check if username and password are correct
+ *Store song info
  * 
  * @author Aidan Ho
  *
  */
 public class Main extends User{
 
-	/**
-	 * smart code to get website information
-	 * 
-	 * @param songInfo from ui
-	 * @throws IOException
-	 */
-	public void saveSong(String songInfo) {
-		File file = new File("C:\\Users\\Aidan Ho\\gitHome\\project1\\src\\edu\\ho\\java\\finalProject\\songDatabase");
-		List<String> list = new ArrayList<String>();
-		Song song = new Song();
-		// Fill in the list
-		try {
-			Scanner input = new Scanner(file);
-			BufferedReader reader = new BufferedReader(new FileReader(file));
-			while (input.hasNextLine()) {
-				// read a line
-				String lines = reader.readLine();
-				String[] line = lines.split(":");
-				// save user information for comparison
-				song.songName = line[0];
-				// compare username1 and password1
-				input.nextLine();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.print(song.songName);
-	}
 
 
 	/**
@@ -119,64 +104,14 @@ public class Main extends User{
 	 * 
 	 */
 	public void loadSong() {
-		File file = new File("C:\\Users\\Aidan Ho\\gitHome\\project1\\src\\edu\\ho\\java\\finalProject\\songDatabase");
-		List<String> list = new ArrayList<String>();
-		Song song = new Song();
-		// Fill in the list
-		try {
-			Scanner input = new Scanner(file);
-			BufferedReader reader = new BufferedReader(new FileReader(file));
-			while (input.hasNextLine()) {
-				// read a line
-				String lines = reader.readLine();
-				String[] line = lines.split(":");
-				// save songName
-				song.songName = line[1];
-				input.nextLine();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
 	}
 
-	public void getUrlInfo() throws IOException {
-		Song s = new Song();
-		URL url = new URL("https://www.youtube.com/watch?v=qVdPh2cBTN0");
-		URLConnection con = url.openConnection();
-		InputStream is = url.openStream();
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
-			String line;
-			while ((line = br.readLine()) != null) {
-				String[] info = line.split(",");
-				// make a search method to search for a array that author_name and set it to
-				// author name...
-				System.out.println(line);
-			}
-		}
-	}
+
 
 	// Testing
-	public static void main(String[] args) throws Exception {
-		File file = new File("C:\\Users\\Aidan Ho\\gitHome\\project1\\src\\edu\\ho\\java\\finalProject\\songDatabase");
-		List<String> list = new ArrayList<String>();
-		Song song = new Song();
-		// Fill in the list
-		try {
-			Scanner input = new Scanner(file);
-			BufferedReader reader = new BufferedReader(new FileReader(file));
-			while (input.hasNextLine()) {
-				// read a line
-				String lines = reader.readLine();
-				String[] line = lines.split(":");
-				// save user information for comparison
-				song.songName = line[0];
-				// compare username1 and password1
-				input.nextLine();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.print(song.songName);
+	public static void main(String[] args){
+
 	}
 
 }

@@ -9,8 +9,7 @@ import java.nio.file.Path;
  */
 public class Address {
 	String url;
-	String siteName;
-	String song;
+	Song song;
 	
 	public String getUrl() {
 		return url;
@@ -18,23 +17,11 @@ public class Address {
 	public void setUrl(String string) {
 		this.url = string;
 	}
-	public String getSiteName() {
-		return siteName;
-	}
-	public void setSiteName(String siteName) {
-		this.siteName = siteName;
-	}
-	public String getSong() {
+	public Song getSong() {
 		return song;
 	}
-	public void setSong(String song) {
+	public void setSong(Song song) {
 		this.song = song;
-	}
-	
-	// Constructor
-	public void saveAddress(String siteName, String url) {
-		this.url = url;
-		this.siteName = siteName;
 	}
 
 }

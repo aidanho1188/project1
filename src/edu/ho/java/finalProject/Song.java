@@ -10,8 +10,8 @@ public class Song {
 	String author;
 	String lyric;
 	String date;
-	String duration; // turn duration into string first 
-	String genres; // this will be selected by the user
+	String duration; 
+	String genres; 
 	String description;
 	
 	public String getDescription() {
