@@ -51,7 +51,7 @@ public class Main extends User{
 		BufferedWriter writer;
 		// Write the file without overwrite it.
 		try {
-			writer = new BufferedWriter(new FileWriter("..//project1/src/edu//ho//java//finalProject//UserList", true));
+			writer = new BufferedWriter(new FileWriter("UserList", true));
 			writer.write(userInfo);
 			writer.newLine();
 			writer.close();
@@ -80,7 +80,7 @@ public class Main extends User{
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			while (input.hasNextLine()) {
 				// read a line
-				String lines = reader.readLine();
+				String lines = reader.readLine().trim();
 				String[] line = lines.split(":");
 				// save user information for comparison
 				username = line[2];
@@ -107,7 +107,15 @@ public class Main extends User{
 
 	}
 
-
+	List<Address> song = new ArrayList<Address>();
+	
+	/**
+	 * Save song 
+	 * 
+	 */
+	public void saveSong(Address a) {
+		song.add(a);
+	}
 
 	// Testing
 	public static void main(String[] args){

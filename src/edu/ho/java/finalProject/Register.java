@@ -55,7 +55,6 @@ public class Register extends JFrame {
 	 * Create the frame.
 	 */
 	public Register() {
-		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1024, 768);
 		contentPane = new JPanel();
@@ -139,10 +138,9 @@ public class Register extends JFrame {
 				}
 				else {
 					u.saveUser(firstName, lastName, username, password);
-					String userInfor = firstName + ":" + lastName + ":" + username + ":" + password;
+					String userInfo = firstName + ":" + lastName + ":" + username + ":" + password;
 					JOptionPane.showMessageDialog(null, "Register Successful!", "Register", JOptionPane.INFORMATION_MESSAGE);
-					register.register(userInfor);
-					contentPane.setVisible(false);
+					register.register(userInfo);
 					dispose();
 					
 				}
