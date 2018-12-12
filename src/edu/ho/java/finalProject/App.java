@@ -38,8 +38,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.border.BevelBorder;
 import java.awt.Toolkit;
 /**
- * Make UI (done_
- * Login window (done)
+ * Make UI (done)
+ * Login logic (done)
  * register window (done)
  * Add song(done)
  * Display songlist(done)
@@ -95,7 +95,6 @@ public class App{
 		
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(App.class.getResource("/edu/ho/java/finalProject/image.png")));
 		frame.setForeground(Color.BLACK);
 		frame.setBackground(Color.DARK_GRAY);
 		frame.setBounds(100, 100, 1024, 768);
