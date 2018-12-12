@@ -123,6 +123,8 @@ public class App{
 						//load new window??
 //						textFieldUsername.setText(m.getFirstName());
 //						passwordField.hide();
+						textFieldUsername.setEditable(false);
+						passwordField.setEditable(false);
 					}
 					else {
 						passwordField.setText("");
@@ -299,25 +301,34 @@ public class App{
 		panel_1.add(btnNewButton_2);
 		
 		table = new JTable();
+		table.setCellSelectionEnabled(true);
 		table.setForeground(Color.WHITE);
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		table.setBackground(Color.DARK_GRAY);
-		table.setEnabled(false);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
 				"New column", "New column", "New column", "New column", "New column", "New column", "New column"
 			}
-		));
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 		table.getColumnModel().getColumn(0).setMinWidth(50);
 		table.getColumnModel().getColumn(1).setMinWidth(50);
 		table.getColumnModel().getColumn(2).setMinWidth(50);
 		table.getColumnModel().getColumn(3).setMinWidth(50);
+		table.getColumnModel().getColumn(4).setResizable(false);
 		table.getColumnModel().getColumn(4).setMinWidth(75);
+		table.getColumnModel().getColumn(5).setPreferredWidth(200);
 		table.getColumnModel().getColumn(5).setMinWidth(200);
-		table.getColumnModel().getColumn(6).setPreferredWidth(20);
+		table.getColumnModel().getColumn(6).setPreferredWidth(200);
 		table.getColumnModel().getColumn(6).setMinWidth(200);
 		table.setBounds(10, 21, 942, 522);
 		panel_1.add(table);
