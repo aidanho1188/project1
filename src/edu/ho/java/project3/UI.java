@@ -206,7 +206,7 @@ public class UI {
 				String state = textFieldState.getText().toString();
 				String zipcode = textFieldZipcode.getText().toString();
 				a.setAddress(street, city, state, zipcode);
-				
+
 				String firstName = textFieldFirstName.getText().toString();
 				String lastName = textFieldLastName.getText().toString();
 				String email = textFieldEmail.getText().toString();

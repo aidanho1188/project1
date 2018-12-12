@@ -36,6 +36,7 @@ import java.awt.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.BevelBorder;
+import java.awt.Toolkit;
 /**
  * Make UI (done_
  * Login window (done)
@@ -93,15 +94,20 @@ public class App{
 	private void initialize() {
 		
 		frame = new JFrame();
-		frame.setForeground(Color.WHITE);
-		frame.setBackground(Color.WHITE);
+		frame.setResizable(false);
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(App.class.getResource("/edu/ho/java/finalProject/image.png")));
+		frame.setForeground(Color.BLACK);
+		frame.setBackground(Color.DARK_GRAY);
 		frame.setBounds(100, 100, 1024, 768);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(Color.WHITE);
+		tabbedPane.setForeground(SystemColor.desktop);
 		frame.getContentPane().add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.DARK_GRAY);
 		tabbedPane.addTab("Home", null, panel_2, null);
 		panel_2.setLayout(null);
 		
@@ -129,6 +135,8 @@ public class App{
 					else {
 						passwordField.setText("");
 						JOptionPane.showMessageDialog(null, "Incorrect Username or Password!", "Login", JOptionPane.ERROR_MESSAGE);
+						m.setFirstName("Guest");
+						m.setLastName("");
 					}
 			
 			}
@@ -149,18 +157,21 @@ public class App{
 		panel_2.add(btnNewButton);
 		
 		JLabel lblLogin = new JLabel("Login");
+		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setFont(new Font("Tahoma", Font.BOLD, 36));
 		lblLogin.setBounds(408, 11, 104, 46);
 		panel_2.add(lblLogin);
 		
 		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setForeground(Color.WHITE);
 		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblUsername.setBounds(10, 167, 90, 25);
+		lblUsername.setBounds(10, 154, 90, 25);
 		panel_2.add(lblUsername);
 		
 		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblPassword.setBounds(10, 342, 90, 25);
+		lblPassword.setBounds(10, 366, 90, 25);
 		panel_2.add(lblPassword);
 		
 		textFieldUsername = new JTextField();
@@ -169,10 +180,25 @@ public class App{
 		textFieldUsername.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(10, 470, 983, 33);
+		passwordField.setBounds(10, 421, 983, 33);
 		panel_2.add(passwordField);
 		
+		JButton btnNewButton_1 = new JButton("Guest");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/**
+				 * guest mode: set name to guest
+				 */
+				m.setFirstName("Guest");
+				m.setLastName("");
+				JOptionPane.showMessageDialog(null, "Guest mode activated!", "Login", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		btnNewButton_1.setBounds(356, 643, 186, 47);
+		panel_2.add(btnNewButton_1);
+		
 		JPanel panel = new JPanel();
+		panel.setForeground(Color.BLACK);
 		tabbedPane.addTab("Add Song", null, panel, null);
 		panel.setLayout(null);
 		
@@ -330,7 +356,7 @@ public class App{
 		table.getColumnModel().getColumn(5).setMinWidth(200);
 		table.getColumnModel().getColumn(6).setPreferredWidth(200);
 		table.getColumnModel().getColumn(6).setMinWidth(200);
-		table.setBounds(10, 21, 942, 522);
+		table.setBounds(10, 21, 966, 580);
 		panel_1.add(table);
 	}
 }

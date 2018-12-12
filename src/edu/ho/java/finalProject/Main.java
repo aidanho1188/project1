@@ -30,8 +30,10 @@ import edu.ho.java.hangman_v2.Game;;
  * Make and application that let the user self-register and login. Allow the
  * user to manually add a song into a song list.
  *
- * Create UI Store user register info in a file Login: Check if username and
- * password are correct Store song info
+ * Create UI
+ * Store user register info in a file
+ * Login: Check if username and password are correct
+ * Store song info
  * 
  * v1.0 completed
  * @author Aidan Ho
@@ -85,7 +87,7 @@ public class Main extends User {
 				password = line[3];
 				firstName = line[0];
 				lastName = line[1];
-				saveUser(firstName, lastName, username1, password1);
+				saveUser(firstName, lastName, username, password);
 				;
 				// compare username1 and password1
 				if (username1.equals(username) && password1.equals(password)) {
@@ -108,7 +110,7 @@ public class Main extends User {
 		BufferedWriter writer;		
 		// create a string format and save it
 		// Added by%           author%           song%           duration%           genres%           description%           url%
-		String song1 = (firstName+""+lastName+"%"+author+"%"+songName+"%"+duration+"%"+genres+"%"+description+"%"+url);
+		String song1 = (firstName+" "+lastName+"%"+author+"%"+songName+"%"+duration+"%"+genres+"%"+description+"%"+url);
 
 		try {
 			writer = new BufferedWriter(new FileWriter("SongList", true));
