@@ -8,12 +8,17 @@ package edu.ho.java.finalProject;
 public class Song {
 	String songName;
 	String author;
-	String lyric;
-	String date;
 	String duration; 
 	String genres; 
 	String description;
+	String url;
 	
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	public String getDescription() {
 		return description;
 	}
@@ -44,27 +49,14 @@ public class Song {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public String getLyric() {
-		return lyric;
-	}
-	public void setLyric(String lyric) {
-		this.lyric = lyric;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	// Constructor
-	public void saveSong(String songName, String author, String lyric, String date, String duration, String genres, String description) {
+	// Constructor to save song
+	public void saveSong(String songName, String author, String duration, String genres, String description, String url) {
 		this.songName = songName;
 		this.author = author;
-		this.lyric = lyric;
-		this.date = date;
 		this.duration = duration;
 		this.genres = genres;
 		this.description = description;
+		this.url = url;
 	}
 
 }

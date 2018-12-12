@@ -15,8 +15,14 @@ import javax.swing.JTextPane;
 import javax.swing.Timer;
 
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.awt.event.ActionEvent;
 import java.awt.TextArea;
+import java.awt.TextField;
+
 import javax.swing.JTextArea;
 import javax.swing.JPasswordField;
 import java.awt.SystemColor;
@@ -31,22 +37,19 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.BevelBorder;
 /**
- * Login window ()
+ * Make UI (done_
+ * Login window (done)
  * register window (done)
- * Display song information
- * Display lyrics
+ * Add song(done)
+ * Display songlist(done)
  * 
  * @author Aidan Ho
  *
  */
 
-public class App extends Login{
+public class App{
 
-	Song song = new Song();
-	Address address = new Address();
-	User user = new User();
 	Main m = new Main();
-	Login log = new Login();
 	Register reg = new Register();
 	
 	private JFrame frame;
@@ -115,9 +118,11 @@ public class App extends Login{
 				String lastName = m.getLastName();
 				
 				// check if username and password is matched with the UserList in the main class
-					if (m.Login(username1, password1)) {
+					if (m.login(username1, password1)) {
 						JOptionPane.showMessageDialog(null, "Login successful!", "Login", JOptionPane.INFORMATION_MESSAGE);
-						m.saveUser(firstName, lastName, username1, password1);
+						//load new window??
+//						textFieldUsername.setText(m.getFirstName());
+//						passwordField.hide();
 					}
 					else {
 						passwordField.setText("");
@@ -178,13 +183,29 @@ public class App extends Login{
 		panel.add(textFieldURL);
 		textFieldURL.setColumns(10);
 		
-		JButton btnSubmit = new JButton("Submit");
+		JButton btnSubmit = new JButton("Add");
 		btnSubmit.addActionListener(new ActionListener() {
 			/**
 			 * add song to a file
 			 */
 			public void actionPerformed(ActionEvent e) {
-
+				String author = textFieldAuthor.getText();
+				String description = textFieldDescription.getText();
+				String duration = textFieldDuration.getText();
+				String genres = textFieldGenres.getText();
+				String songName = textFieldSong.getText();
+				String url = textFieldURL.getText();
+				// Set song info to the Song class
+				m.saveSong(songName, author, duration, genres, description, url);
+				// run addSong method and add it into the file
+				m.addSong();
+				// reset textfield
+				textFieldAuthor.setText("");
+				textFieldDescription.setText("");
+				textFieldDuration.setText("");
+				textFieldGenres.setText("");
+				textFieldSong.setText("");
+				textFieldURL.setText("");
 			}
 		});
 		
@@ -242,19 +263,35 @@ public class App extends Login{
 		
 		JButton btnNewButton_2 = new JButton("Load song");
 		btnNewButton_2.addActionListener(new ActionListener() {
+			/**
+			 * load and create a songlist from song file
+			 */
 			public void actionPerformed(ActionEvent arg0) {
-				  //  String data1 = something1.getSomething();
-			    //    String data2 = something2.getSomething();
-				  //  String data3 = something3.getSomething();
-				  //  String data4 = something4.getSomething();
-
-				    Object[] row = { "", "", "", "" };
-
-				    DefaultTableModel model = (DefaultTableModel) table.getModel();
-
-				    model.addRow(row);
-
-				    // clear the entries.
+				String filePath = "SongList";
+				File file = new File(filePath);
+				
+				try {
+					BufferedReader br = new BufferedReader(new FileReader(file));
+					String firstLine = br.readLine().trim();
+					String[] colunmsName = firstLine.split("%");
+					DefaultTableModel model = (DefaultTableModel)table.getModel();
+					// clear table from previous codes
+					model.setRowCount(0);
+					 // get lines from txt file
+		            Object[] tableLines = br.lines().toArray();
+		            
+		            // extratct data from lines
+		            // set data to jtable model
+		            for(int i = 0; i < tableLines.length; i++)
+		            {
+		                String line = tableLines[i].toString().trim();
+		                String[] dataRow = line.split("%");
+		                model.addRow(dataRow);
+		            }
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	
 			}
 		});
@@ -271,10 +308,18 @@ public class App extends Login{
 			new Object[][] {
 			},
 			new String[] {
-				"URL", "Song", "Author", "Genres", "Duration", "Description"
+				"New column", "New column", "New column", "New column", "New column", "New column", "New column"
 			}
 		));
-		table.setBounds(10, 11, 942, 522);
+		table.getColumnModel().getColumn(0).setMinWidth(50);
+		table.getColumnModel().getColumn(1).setMinWidth(50);
+		table.getColumnModel().getColumn(2).setMinWidth(50);
+		table.getColumnModel().getColumn(3).setMinWidth(50);
+		table.getColumnModel().getColumn(4).setMinWidth(75);
+		table.getColumnModel().getColumn(5).setMinWidth(200);
+		table.getColumnModel().getColumn(6).setPreferredWidth(20);
+		table.getColumnModel().getColumn(6).setMinWidth(200);
+		table.setBounds(10, 21, 942, 522);
 		panel_1.add(table);
 	}
 }

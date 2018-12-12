@@ -16,30 +16,28 @@ import javax.swing.text.Document;
 import edu.ho.java.hangman_v2.Game;;
 
 /**
- *Old proposal
- *I want to make an application that takes URL from the user and find the Songs information on a web page like name, duration, lyrics, and author. It will also store all of that information on another file so the user can call it.
-
- *Make UI
- *Get User Input
- *Gather information from URL
- *Store information in a file
- *
- *
- *New proposal
- *
- *Make and application that let the user self-register and login. Allow the user to manually add a song into a song list.
- *
- *Create UI
- *Store user register info in a file
- *Login: Check if username and password are correct
- *Store song info
+ * Old proposal I want to make an application that takes URL from the user and
+ * find the Songs information on a web page like name, duration, lyrics, and
+ * author. It will also store all of that information on another file so the
+ * user can call it.
  * 
+ * Make UI Get User Input Gather information from URL Store information in a
+ * file
+ *
+ *
+ * New proposal
+ *
+ * Make and application that let the user self-register and login. Allow the
+ * user to manually add a song into a song list.
+ *
+ * Create UI Store user register info in a file Login: Check if username and
+ * password are correct Store song info
+ * 
+ * v1.0 completed
  * @author Aidan Ho
  *
  */
-public class Main extends User{
-
-
+public class Main extends User {
 
 	/**
 	 * save user information into a file
@@ -69,7 +67,7 @@ public class Main extends User{
 	 * @catch IOException e
 	 * @return isLogin
 	 */
-	public boolean Login(String username1, String password1) {
+	public boolean login(String username1, String password1) {
 		boolean isLogin = false;
 		File file = new File("UserList");
 		List<String> list = new ArrayList<String>();
@@ -85,6 +83,10 @@ public class Main extends User{
 				// save user information for comparison
 				username = line[2];
 				password = line[3];
+				firstName = line[0];
+				lastName = line[1];
+				saveUser(firstName, lastName, username1, password1);
+				;
 				// compare username1 and password1
 				if (username1.equals(username) && password1.equals(password)) {
 					// save user info if login successful
@@ -98,28 +100,25 @@ public class Main extends User{
 		}
 		return isLogin;
 	}
-
-	/**
-	 * load song
-	 * 
-	 */
-	public void loadSong() {
-
-	}
-
-	List<Address> song = new ArrayList<Address>();
 	
 	/**
-	 * Save song 
-	 * 
+	 * add song to the songList file 
 	 */
-	public void saveSong(Address a) {
-		song.add(a);
-	}
+	public void addSong() {
+		BufferedWriter writer;		
+		// create a string format and save it
+		// Added by%           author%           song%           duration%           genres%           description%           url%
+		String song1 = (firstName+""+lastName+"%"+author+"%"+songName+"%"+duration+"%"+genres+"%"+description+"%"+url);
 
-	// Testing
-	public static void main(String[] args){
-
+		try {
+			writer = new BufferedWriter(new FileWriter("SongList", true));
+			writer.write(song1);
+			writer.newLine();
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
