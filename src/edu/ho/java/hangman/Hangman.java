@@ -52,29 +52,35 @@ public class Hangman {
 	 * @param guess string to search
 	 * @throws InterruptedException on error playing again
 	 */
-	private void checkMaskedWord(String guess) throws InterruptedException {
-		String mask = ""; // We use this newMask later to check if we reveal all the letter.. so we can
-								// win.
-		tempMask += guess; // Store all our guess, in guesses.
+	private void checkMaskedWord(String guess) throws InterruptedException{
+		String mask = ""; // We use this mask later to check if we reveal all the letter.. so we can win.
+		tempMask += guess; // Store all our guess, in tempMask.
 		if (!word.contains(guess)) {
-			// - 1 chance each guess
+			// - 1 live each wrong guess
 			lives--;
 		}
-
 		System.out.println("---------------------------------------------------------");
 		System.out.print("Word: ");
-
+		mask = checkMask(mask);
+		compCheck(mask);
+	}
+	
+	String checkMask(String mask) {
 		// Check if we have a letter that matched with the word in guesses by the for loop.
+		String currentMask = mask;
 		for (int i = 0; i < word.length(); i++) {
 			if (tempMask.contains(String.valueOf(word.charAt(i)))) {
 				System.out.print(word.charAt(i));
-				mask += String.valueOf(word.charAt(i));
+				currentMask += String.valueOf(word.charAt(i));
 			} else {
 				System.out.print("*");
-				mask += "*";
+				currentMask += "*";
 			}
 		}
-		
+		return currentMask;
+	}
+	
+	void compCheck(String mask) throws InterruptedException{
 		// check if our word has been solved
 		if (isSolved()) {
 			System.out.println("\n Game Over!");
@@ -91,7 +97,7 @@ public class Hangman {
 	 * 
 	 * @throws InterruptedException
 	 */
-	public void game() throws InterruptedException {
+	public void startGame() throws InterruptedException {
 		System.out.println("Welcome to hangman!"); // Start game
 		TimeUnit.SECONDS.sleep(2); // Add in delays
 		System.out.println("Here are the rules:"); // Game rules***
@@ -135,12 +141,12 @@ public class Hangman {
 	 * @throws InterruptedException
 	 */
 	private void playAgain() throws InterruptedException {
-		System.out.println("Do you want to play again?: \nType y or Y for yes");
+		System.out.println("\nDo you want to play again?: \nType y or Y for yes");
 		String again = userInput.nextLine();
 		if (String.valueOf(again).equals("y") || String.valueOf(again).equals("Y")) {
 			lives = 10; // Reset lives
 			tempMask = ""; // Reset guesses
-			this.game();
+			this.startGame();
 		} else { // Create a loop that keep asking the user input to play the game, if the user
 					// don't want to play, the screen will keep clearing.
 			System.out.println("Game end.");

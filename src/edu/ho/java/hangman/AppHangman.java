@@ -13,7 +13,7 @@ public class AppHangman {
 		
 		Hangman w = new Hangman();
 		
-		w.game();	
+		w.startGame();	
 		
 		
 	}
