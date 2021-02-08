@@ -11,7 +11,7 @@ public class Hangman {
 	private Random random = new Random();
 
 	private final String[] wordList = { "search", "application", "homeostatic", "general" };
-	private String word = wordList[random.nextInt(wordList.length)];
+	private String randomWord = wordList[random.nextInt(wordList.length)];
 	private String tempMask = "";
 	private int lives = 10;
 	
@@ -52,26 +52,30 @@ public class Hangman {
 	 * @param guess string to search
 	 * @throws InterruptedException on error playing again
 	 */
-	private void checkMaskedWord(String guess) throws InterruptedException{
+	private void createMask(String guess) throws InterruptedException{
 		String mask = ""; // We use this mask later to check if we reveal all the letter.. so we can win.
 		tempMask += guess; // Store all our guess, in tempMask.
-		if (!word.contains(guess)) {
-			// - 1 live each wrong guess
-			lives--;
-		}
+		checkLive(guess);
 		System.out.println("---------------------------------------------------------");
 		System.out.print("Word: ");
 		mask = checkMask(mask);
-		compCheck(mask);
+		checkComp(mask);
+	}
+	
+	void checkLive(String guess) {
+		if (!randomWord.contains(guess)) {
+			// - 1 live each wrong guess
+			lives--;
+		}
 	}
 	
 	String checkMask(String mask) {
 		// Check if we have a letter that matched with the word in guesses by the for loop.
 		String currentMask = mask;
-		for (int i = 0; i < word.length(); i++) {
-			if (tempMask.contains(String.valueOf(word.charAt(i)))) {
-				System.out.print(word.charAt(i));
-				currentMask += String.valueOf(word.charAt(i));
+		for (int i = 0; i < randomWord.length(); i++) {
+			if (tempMask.contains(String.valueOf(randomWord.charAt(i)))) {
+				System.out.print(randomWord.charAt(i));
+				currentMask += String.valueOf(randomWord.charAt(i));
 			} else {
 				System.out.print("*");
 				currentMask += "*";
@@ -80,7 +84,7 @@ public class Hangman {
 		return currentMask;
 	}
 	
-	void compCheck(String mask) throws InterruptedException{
+	void checkComp(String mask) throws InterruptedException{
 		// check for completion, if our word has been solved
 		if (isSolved()) {
 			System.out.println("\n Game Over!");
@@ -115,7 +119,7 @@ public class Hangman {
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n "); // clear screen
 		System.out.println("***Start***");
 		TimeUnit.SECONDS.sleep(1);
-		System.out.print("Your word have " + word.length() + " letters.");
+		System.out.print("Your word have " + randomWord.length() + " letters.");
 		playGame(); // move to playGame and ask for user input
 	}
 
@@ -128,10 +132,10 @@ public class Hangman {
 	private void playGame() throws InterruptedException {
 		while (true) {
 			System.out.println("\nYou have " + lives + " lives left.");
-			printHint(word);
+			printHint(randomWord);
 			System.out.print("Guess: ");
 			String guess = userInput.nextLine().toLowerCase(); // ask user input
-			checkMaskedWord(guess);
+			createMask(guess);
 		}
 	}
 
