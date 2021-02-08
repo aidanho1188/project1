@@ -10,8 +10,8 @@ public class Hangman {
 	private static final Scanner userInput = new Scanner(System.in);
 	private Random random = new Random();
 
-	private final String[] words = { "search", "application", "homeostatic", "general" };
-	private String word = words[random.nextInt(words.length)];
+	private final String[] wordList = { "search", "application", "homeostatic", "general" };
+	private String word = wordList[random.nextInt(wordList.length)];
 	private String tempMask = "";
 	private int lives = 10;
 	
@@ -34,13 +34,13 @@ public class Hangman {
 		hint.add("Request");
 		hint.add("Chemical balance");
 		hint.add("Common");
-		if (word == words[0]) {
+		if (word == wordList[0]) {
 			System.out.println("Your hint: A synonym of " + hint.get(0));
-		} else if (word == words[1]) {
+		} else if (word == wordList[1]) {
 			System.out.println("Your hint: A synonym of " + hint.get(1));
-		} else if (word == words[2]) {
+		} else if (word == wordList[2]) {
 			System.out.println("Your hint: " + hint.get(2) + " that life need");
-		} else if (word == words[3]) {
+		} else if (word == wordList[3]) {
 			System.out.println("Your hint: A synonym of " + hint.get(3));
 		}
 	}
@@ -81,7 +81,7 @@ public class Hangman {
 	}
 	
 	void compCheck(String mask) throws InterruptedException{
-		// check if our word has been solved
+		// check for completion, if our word has been solved
 		if (isSolved()) {
 			System.out.println("\n Game Over!");
 			playAgain();
@@ -93,7 +93,7 @@ public class Hangman {
 	}
 	
 	/**
-	 * Start the game.
+	 * Start the game prompt
 	 * 
 	 * @throws InterruptedException
 	 */
@@ -142,17 +142,17 @@ public class Hangman {
 	 */
 	private void playAgain() throws InterruptedException {
 		System.out.println("\nDo you want to play again?: \nType y or Y for yes");
-		String again = userInput.nextLine();
-		if (String.valueOf(again).equals("y") || String.valueOf(again).equals("Y")) {
+		String userResponse = userInput.nextLine();
+		if (String.valueOf(userResponse).equals("y") || String.valueOf(userResponse).equals("Y")) {
 			lives = 10; // Reset lives
-			tempMask = ""; // Reset guesses
+			tempMask = ""; // Reset mask
 			this.startGame();
 		} else { // Create a loop that keep asking the user input to play the game, if the user
 					// don't want to play, the screen will keep clearing.
 			System.out.println("Game end.");
 			System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n "); // clear screen
 			@SuppressWarnings("unused")
-			String again1 = userInput.nextLine();
+			String input = userInput.nextLine();
 			this.playAgain();
 		}
 	}
