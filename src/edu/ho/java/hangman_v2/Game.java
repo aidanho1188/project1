@@ -29,7 +29,6 @@ public class Game {
 		return hint;
 	}
 
-
 	public String getWord() {
 		return word;
 	}
@@ -38,6 +37,7 @@ public class Game {
 		this.word = word;
 		this.hint = hint;
 	}
+	
 	public String maskWord() {
 		String mask = "";
 		for (int i = 0; i < word.length(); i++) {
@@ -55,7 +55,6 @@ public class Game {
 
 	public void lives(String guess) {
 		if (!word.contains(guess)) {
-			// - 1 lives each wrong guess
 			lives--;
 		}
 	}
