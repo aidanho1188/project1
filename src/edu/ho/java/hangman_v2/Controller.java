@@ -27,10 +27,8 @@ public class Controller {
 
 	public void playGame(Game g) {
 		while (!g.gameSolve() && !g.dead()) {
-			g.printPromtp();
-			String guess = input.nextLine();
-			g.setGuesses(guess);
-			g.lives(guess);
+			g.printPrompt(input);
+
 			if (g.dead()) {
 				System.out.print("You lose!\n");
 			} 

@@ -38,7 +38,7 @@ public class Game {
 		this.hint = hint;
 	}
 	
-	public void printPromtp(Scanner input) {
+	public void printPrompt(Scanner input) {
 		System.out.println("Word: " + maskWord());
 		System.out.println("Hint: " + getHint());
 		System.out.println("Lives: " + getLives());
