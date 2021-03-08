@@ -23,9 +23,7 @@ import edu.ho.java.week8.User;
 
 public class Controller {
 
-	Scanner input = new Scanner(System.in);
-
-	public void playGame(Game g) {
+	public void playGame(Game g, Scanner input) {
 		while (!g.isSolved() && !g.isDead()) {
 			g.printPrompt(input);
 
@@ -56,11 +54,12 @@ public class Controller {
 	}
 
 	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
 		Controller rf = new Controller();
 		try {
 			List<Game> games = rf.read();
 			for (Game game : games) {
-				rf.playGame(game);
+				rf.playGame(game, input);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
