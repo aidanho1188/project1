@@ -29,18 +29,15 @@ public class Game {
 		return hint;
 	}
 
-	public void setHint(String hint) {
-		this.hint = hint;
-	}
 
 	public String getWord() {
 		return word;
 	}
-
-	public void setWord(String word) {
+	
+	public void setGame(String word, String hint) {
 		this.word = word;
+		this.hint = hint;
 	}
-
 	public String maskWord() {
 		String mask = "";
 		for (int i = 0; i < word.length(); i++) {
