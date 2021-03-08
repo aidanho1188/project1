@@ -23,19 +23,20 @@ import edu.ho.java.week8.User;
 
 public class Controller {
 
-	public void playGame(Game g, Scanner guess) {
-		while (!g.isSolved() && !g.isDead()) {
-			g.printGameStatus();
-			g.getUserInput(guess);
-			if (g.isDead()) {
-				System.out.print("You lose!\n");
-			} 
-			else if (g.isSolved()) {
-				System.out.println("You won and the word is " + g.getWord()+ "\n");
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		Controller rf = new Controller();
+		try {
+			List<Game> games = rf.read();
+			for (Game game : games) {
+				rf.playGame(game, input);
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.print(e);
 		}
 	}
-
+	
 	public List<Game> read() throws IOException {
 		List<Game> gamesList = new ArrayList<Game>();
 		File f = new File("GameList");
@@ -52,18 +53,17 @@ public class Controller {
 		}
 		return gamesList;
 	}
-
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		Controller rf = new Controller();
-		try {
-			List<Game> games = rf.read();
-			for (Game game : games) {
-				rf.playGame(game, input);
+	
+	public void playGame(Game g, Scanner guess) {
+		while (!g.isSolved() && !g.isDead()) {
+			g.printGameStatus();
+			g.getUserInput(guess);
+			if (g.isDead()) {
+				System.out.print("You lose!\n");
+			} 
+			else if (g.isSolved()) {
+				System.out.println("You won and the word is " + g.getWord()+ "\n");
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.print(e);
 		}
 	}
 
