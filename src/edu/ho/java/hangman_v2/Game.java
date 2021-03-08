@@ -38,6 +38,12 @@ public class Game {
 		this.hint = hint;
 	}
 	
+	public void printPromtp() {
+		System.out.println("Word: " + maskWord());
+		System.out.println("Hint: " + getHint());
+		System.out.println("Lives: " + getLives());
+	}
+	
 	public String maskWord() {
 		String mask = "";
 		for (int i = 0; i < word.length(); i++) {
