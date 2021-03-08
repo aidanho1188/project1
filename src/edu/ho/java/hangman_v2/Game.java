@@ -38,13 +38,13 @@ public class Game {
 		this.hint = hint;
 	}
 	
-	public void printGameStatus(Scanner input) {
+	public void printGameStatus() {
 		System.out.println("Word: " + maskWord());
 		System.out.println("Hint: " + getHint());
 		System.out.println("Lives: " + getLives());
 	}
 	
-	public void getUserGuess(Scanner input) {
+	public void getUserInput(Scanner input) {
 		String guess = input.nextLine();
 		setGuesses(guess);
 		checkLives(guess);
