@@ -37,19 +37,12 @@ public class Controller {
 	 * @param g (a single game from games list)
 	 */
 	public void playGame(Game g) {
-		// Loop game until game is solve
 		while (!g.gameSolve() && !g.dead()) {
-			// Print masked word
 			System.out.println("Word: " + g.maskWord());
-			// Print hint
 			System.out.println("Hint: " + g.getHint());
-			// Print lives
 			System.out.println("Lives: " + g.getLives());
-			// Ask for user input
 			String guess = input.nextLine();
-			// Set user input
 			g.setGuesses(guess);
-			// Calculated lives
 			g.lives(guess);
 			if (g.dead()) {
 				System.out.print("You lose!\n");
@@ -73,10 +66,8 @@ public class Controller {
 		File f = new File("GameList");
 		System.out.println("Does the file existed? " + f.exists());
 		if (f.exists()) {
-			// Get a word from the file
 			BufferedReader br = new BufferedReader(new FileReader(f));
 			String lines;
-			// Fill the gameslist with while loop
 			while ((lines = br.readLine()) != null) {
 				String[] line = lines.split(":");
 				Game gl = new Game();
@@ -98,7 +89,7 @@ public class Controller {
 		try {
 			List<Game> games = rf.read();
 			for (Game game : games) {
-				rf.playGame(game); // invoke playGame(game)
+				rf.playGame(game);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
