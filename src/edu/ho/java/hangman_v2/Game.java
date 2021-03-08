@@ -3,10 +3,6 @@ package edu.ho.java.hangman_v2;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Hangman class
- * @author Aidan Ho
- */
 public class Game {
 	private int lives = 6;
 	private String guesses = "";
