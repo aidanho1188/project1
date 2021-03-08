@@ -38,10 +38,13 @@ public class Game {
 		this.hint = hint;
 	}
 	
-	public void printPromtp() {
+	public void printPromtp(Scanner input) {
 		System.out.println("Word: " + maskWord());
 		System.out.println("Hint: " + getHint());
 		System.out.println("Lives: " + getLives());
+		String guess = input.nextLine();
+		setGuesses(guess);
+		checkLives(guess);
 	}
 	
 	public String maskWord() {
@@ -59,7 +62,7 @@ public class Game {
 
 	}
 
-	public void lives(String guess) {
+	public void checkLives(String guess) {
 		if (!word.contains(guess)) {
 			lives--;
 		}
