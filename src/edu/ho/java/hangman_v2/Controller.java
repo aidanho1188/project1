@@ -26,13 +26,13 @@ public class Controller {
 	Scanner input = new Scanner(System.in);
 
 	public void playGame(Game g) {
-		while (!g.gameSolve() && !g.dead()) {
+		while (!g.isSolved() && !g.isDead()) {
 			g.printPrompt(input);
 
-			if (g.dead()) {
+			if (g.isDead()) {
 				System.out.print("You lose!\n");
 			} 
-			else if (g.gameSolve()) {
+			else if (g.isSolved()) {
 				System.out.println("You won and the word is " + g.getWord()+ "\n");
 			}
 		}

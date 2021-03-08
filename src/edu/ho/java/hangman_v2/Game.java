@@ -68,11 +68,11 @@ public class Game {
 		}
 	}
 
-	public boolean gameSolve() {
+	public boolean isSolved() {
 		return !maskWord().contains("*");
 	}
 
-	public boolean dead() {
+	public boolean isDead() {
 		if (getLives() == 0) {
 			return true;
 		} else {
