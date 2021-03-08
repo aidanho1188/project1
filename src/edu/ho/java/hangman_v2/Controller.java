@@ -25,17 +25,6 @@ public class Controller {
 
 	Scanner input = new Scanner(System.in);
 
-	/**
-	 * Control how the game flow 
-	 * Create new game 
-	 * Prompt user 
-	 * Collect guess 
-	 * Update game status 
-	 * Repeat with while loop When word solved, while statement= false
-	 * End game
-	 * 
-	 * @param g (a single game from games list)
-	 */
 	public void playGame(Game g) {
 		while (!g.gameSolve() && !g.dead()) {
 			System.out.println("Word: " + g.maskWord());
@@ -53,14 +42,6 @@ public class Controller {
 		}
 	}
 
-	/**
-	 * Create a games list out of the GameList.txt file 
-	 * Read a line Set word and hint 
-	 * Add it into games list
-	 * 
-	 * @throws IOException on error
-	 * @return a List
-	 */
 	public List<Game> read() throws IOException {
 		List<Game> gamesList = new ArrayList<Game>();
 		File f = new File("GameList");
@@ -78,12 +59,6 @@ public class Controller {
 		return gamesList;
 	}
 
-	/**
-	 * Create a loop that take information from GameList.txt file 
-	 * Run game for each Word in the games list 
-	 * After playGame() end, move to the next word
-	 * 
-	 */
 	public static void main(String[] args) {
 		Controller rf = new Controller();
 		try {
