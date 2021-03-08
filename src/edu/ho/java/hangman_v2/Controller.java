@@ -80,10 +80,7 @@ public class Controller {
 			while ((lines = br.readLine()) != null) {
 				String[] line = lines.split(":");
 				Game gl = new Game();
-				// Set the word
-				gl.setWord(line[0]);
-				// Set hint
-				gl.setHint(line[1]);
+				gl.setGame(line[0], line[1]);
 				gamesList.add(gl);
 			}
 		}
