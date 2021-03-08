@@ -23,10 +23,10 @@ import edu.ho.java.week8.User;
 
 public class Controller {
 
-	public void playGame(Game g, Scanner input) {
+	public void playGame(Game g, Scanner guess) {
 		while (!g.isSolved() && !g.isDead()) {
-			g.printPrompt(input);
-
+			g.printGameStatus();
+			g.getUserInput(guess);
 			if (g.isDead()) {
 				System.out.print("You lose!\n");
 			} 
