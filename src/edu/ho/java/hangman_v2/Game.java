@@ -8,6 +8,7 @@ public class Game {
 	private String guesses = "";
 	private String hint;
 	private String word;
+	private String mask = "";
 
 	public int getLives() {
 		return lives;
@@ -51,7 +52,7 @@ public class Game {
 	}
 	
 	public String maskWord() {
-		String mask = "";
+		mask = "";
 		for (int i = 0; i < word.length(); i++) {
 			String currentChar = String.valueOf(word.charAt(i));
 			if (guesses.contains(currentChar)) {
