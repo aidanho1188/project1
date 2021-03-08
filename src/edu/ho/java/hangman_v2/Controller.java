@@ -44,6 +44,7 @@ public class Controller {
 		if (f.exists()) {
 			BufferedReader br = new BufferedReader(new FileReader(f));
 			String lines;
+			// game file is in format of, word : hint
 			while ((lines = br.readLine()) != null) {
 				String[] line = lines.split(":");
 				Game gl = new Game();
