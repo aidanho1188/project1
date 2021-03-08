@@ -15,7 +15,7 @@ public class AppHangmanSolution
 		g.setHint("Meow");
 		g.setWord("Cat");
 		g.setLive(6);
-		
+
 		Scanner input = new Scanner(System.in);
 		for(int i =0; i < gArray.length; i++)
 		{
