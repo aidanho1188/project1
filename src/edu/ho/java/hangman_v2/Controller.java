@@ -27,9 +27,7 @@ public class Controller {
 
 	public void playGame(Game g) {
 		while (!g.gameSolve() && !g.dead()) {
-			System.out.println("Word: " + g.maskWord());
-			System.out.println("Hint: " + g.getHint());
-			System.out.println("Lives: " + g.getLives());
+			g.printPromtp();
 			String guess = input.nextLine();
 			g.setGuesses(guess);
 			g.lives(guess);
